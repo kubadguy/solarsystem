@@ -10,8 +10,8 @@
 		<p class="eyebrow">Presentation by roll no. 19 to 27</p>
 		<h1>Solar System</h1>
 		<p class="lede">
-			A dark, focused journey through our neighborhood in space. A cinematic opening with a clean path
-			forward.
+			Lets look at our neighbourhood in Space from Earth
+			to the sun.
 		</p>
 		<a class="cta" href={`${base}/start`}>Start</a>
 	</section>
