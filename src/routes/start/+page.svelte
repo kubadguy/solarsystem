@@ -1,25 +1,26 @@
 <script>
 	import { base } from '$app/paths';
 	const imageUrl =
-		'https://upload.wikimedia.org/wikipedia/commons/6/6d/490_Our_Solar_System.jpg';
+		'https://upload.wikimedia.org/wikipedia/commons/d/d9/Solar_System_graphic_by_NASA.png';
 
 	const hotspots = [
-		{ id: 'sun', label: 'Sun', x: 6, y: 52, size: 70 },
-		{ id: 'inner-planets', label: 'Inner Planets', x: 26, y: 18, size: 90 },
-		{ id: 'mercury', label: 'Mercury', x: 21, y: 52, size: 24 },
-		{ id: 'venus', label: 'Venus', x: 26, y: 52, size: 28 },
-		{ id: 'earth', label: 'Earth', x: 31, y: 52, size: 30 },
-		{ id: 'moon', label: 'Moon', x: 33, y: 44, size: 18 },
-		{ id: 'mars', label: 'Mars', x: 37, y: 52, size: 24 },
-		{ id: 'asteroid-belt', label: 'Asteroid Belt', x: 45, y: 72, size: 60 },
-		{ id: 'outer-planets', label: 'Outer Planets', x: 58, y: 18, size: 100 },
-		{ id: 'jupiter', label: 'Jupiter', x: 56, y: 52, size: 50 },
-		{ id: 'saturn', label: 'Saturn', x: 66, y: 52, size: 50 },
-		{ id: 'uranus', label: 'Uranus', x: 74, y: 52, size: 38 },
-		{ id: 'neptune', label: 'Neptune', x: 82, y: 52, size: 38 },
-		{ id: 'comets', label: 'Comets', x: 90, y: 28, size: 34 },
-		{ id: 'asteroids', label: 'Asteroids', x: 92, y: 70, size: 34 },
-		{ id: 'satellites', label: 'Satellites', x: 96, y: 50, size: 34 }
+		{ id: 'sun', label: 'Sun', x: 5, y: 68, size: 140 },
+		{ id: 'mercury', label: 'Mercury', x: 15.5, y: 68, size: 28 },
+		{ id: 'venus', label: 'Venus', x: 18.2, y: 66.5, size: 34 },
+		{ id: 'earth', label: 'Earth', x: 20.5, y: 64.5, size: 36 },
+		{ id: 'moon', label: 'Moon', x: 22.4, y: 61, size: 22 },
+		{ id: 'mars', label: 'Mars', x: 24.8, y: 63.5, size: 30 },
+		{ id: 'asteroid-belt', label: 'Asteroid Belt', x: 33.5, y: 58, size: 70 },
+		{ id: 'ceres', label: 'Ceres', x: 31, y: 70, size: 26 },
+		{ id: 'jupiter', label: 'Jupiter', x: 43, y: 64, size: 80 },
+		{ id: 'saturn', label: 'Saturn', x: 54, y: 52, size: 80 },
+		{ id: 'comets', label: 'Comets', x: 63.5, y: 75, size: 44 },
+		{ id: 'uranus', label: 'Uranus', x: 71.5, y: 40, size: 52 },
+		{ id: 'neptune', label: 'Neptune', x: 76.5, y: 36, size: 52 },
+		{ id: 'pluto', label: 'Pluto', x: 86, y: 66, size: 36 },
+		{ id: 'makemake', label: 'Makemake', x: 90, y: 80, size: 32 },
+		{ id: 'kuiper-belt-objects', label: 'Kuiper Belt Objects', x: 93, y: 46, size: 70 },
+		{ id: 'eris', label: 'Eris', x: 90, y: 20, size: 34 }
 	];
 </script>
 
@@ -40,7 +41,7 @@
 						style={`--x:${spot.x}%; --y:${spot.y}%; --size:${spot.size}px;`}
 					>
 						<span class="dot" aria-hidden="true"></span>
-						<span class="label">{spot.label}</span>
+						<span class="sr-only">{spot.label}</span>
 					</a>
 				{/each}
 			</div>
@@ -140,14 +141,19 @@
 	}
 
 	.label {
-		font-size: clamp(0.6rem, 1vw, 0.85rem);
-		text-transform: uppercase;
-		letter-spacing: 0.14em;
-		background: rgba(5, 6, 10, 0.7);
-		padding: 0.25rem 0.5rem;
-		border-radius: 999px;
-		border: 1px solid rgba(255, 255, 255, 0.12);
+		font-size: 0.75rem;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
 		white-space: nowrap;
+		border: 0;
 	}
 
 	@media (max-width: 900px) {
