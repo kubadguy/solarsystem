@@ -1,39 +1,121 @@
 <script>
 	import { base } from '$app/paths';
-
-	const nodes = [
-		{ id: 'sun', label: 'Sun', tone: 'sun' },
-		{ id: 'inner-planets', label: 'Inner Planets', tone: 'group' },
-		{ id: 'mercury', label: 'Mercury', tone: 'inner' },
-		{ id: 'venus', label: 'Venus', tone: 'inner' },
-		{ id: 'earth', label: 'Earth', tone: 'earth' },
-		{ id: 'moon', label: 'Moon', tone: 'moon' },
-		{ id: 'mars', label: 'Mars', tone: 'inner' },
-		{ id: 'asteroid-belt', label: 'Asteroid Belt', tone: 'belt' },
-		{ id: 'outer-planets', label: 'Outer Planets', tone: 'group' },
-		{ id: 'jupiter', label: 'Jupiter', tone: 'outer' },
-		{ id: 'saturn', label: 'Saturn', tone: 'outer' },
-		{ id: 'uranus', label: 'Uranus', tone: 'outer' },
-		{ id: 'neptune', label: 'Neptune', tone: 'outer' },
-		{ id: 'comets', label: 'Comets', tone: 'comet' },
-		{ id: 'asteroids', label: 'Asteroids', tone: 'asteroid' },
-		{ id: 'satellites', label: 'Satellites', tone: 'sat' }
-	];
 </script>
 
 <main class="system">
 	<header class="title">
 		<h1>Solar System Map</h1>
-		<p>Tap a body or region to open its page.</p>
+		<p>Click any body or region to open its page.</p>
 	</header>
 
-	<div class="track">
-		{#each nodes as node}
-			<a class={`node ${node.tone}`} href={`${base}/${node.id}`}>
-				<span class="dot"></span>
-				<span class="label">{node.label}</span>
+	<div class="canvas">
+		<svg class="map" viewBox="0 0 1600 420" role="img" aria-label="Solar system diagram">
+			<defs>
+				<radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+					<stop offset="0%" stop-color="#fff2b4" />
+					<stop offset="55%" stop-color="#ffb347" />
+					<stop offset="100%" stop-color="rgba(255, 179, 71, 0)" />
+				</radialGradient>
+				<linearGradient id="earthGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" stop-color="#3bd8ff" />
+					<stop offset="100%" stop-color="#3b7bff" />
+				</linearGradient>
+				<linearGradient id="jupiterGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" stop-color="#f4c086" />
+					<stop offset="100%" stop-color="#ff8f5a" />
+				</linearGradient>
+			</defs>
+
+			<line class="path" x1="120" y1="210" x2="1540" y2="210" />
+
+			<a href={`${base}/sun`} class="planet-link">
+				<circle class="sun" cx="140" cy="210" r="70" fill="url(#sunGlow)" />
+				<circle class="sun-core" cx="140" cy="210" r="30" />
+				<text class="label" x="140" y="320">Sun</text>
 			</a>
-		{/each}
+
+			<a href={`${base}/inner-planets`} class="group-link">
+				<text class="group" x="370" y="90">Inner Planets</text>
+			</a>
+
+			<a href={`${base}/mercury`} class="planet-link">
+				<circle class="planet mercury" cx="320" cy="210" r="8" />
+				<text class="label" x="320" y="300">Mercury</text>
+			</a>
+			<a href={`${base}/venus`} class="planet-link">
+				<circle class="planet venus" cx="390" cy="210" r="12" />
+				<text class="label" x="390" y="300">Venus</text>
+			</a>
+			<a href={`${base}/earth`} class="planet-link">
+				<circle class="planet earth" cx="470" cy="210" r="13" fill="url(#earthGlow)" />
+				<text class="label" x="470" y="300">Earth</text>
+			</a>
+			<a href={`${base}/moon`} class="planet-link">
+				<circle class="moon" cx="500" cy="184" r="5" />
+				<text class="label small" x="510" y="170">Moon</text>
+			</a>
+			<a href={`${base}/mars`} class="planet-link">
+				<circle class="planet mars" cx="560" cy="210" r="10" />
+				<text class="label" x="560" y="300">Mars</text>
+			</a>
+
+			<a href={`${base}/asteroid-belt`} class="planet-link">
+				<g class="belt">
+					<circle cx="640" cy="200" r="2" />
+					<circle cx="650" cy="220" r="3" />
+					<circle cx="670" cy="210" r="2" />
+					<circle cx="690" cy="195" r="2" />
+					<circle cx="705" cy="225" r="3" />
+					<circle cx="720" cy="205" r="2" />
+				</g>
+				<text class="label" x="680" y="300">Asteroid Belt</text>
+			</a>
+
+			<a href={`${base}/outer-planets`} class="group-link">
+				<text class="group" x="920" y="90">Outer Planets</text>
+			</a>
+
+			<a href={`${base}/jupiter`} class="planet-link">
+				<circle class="planet jupiter" cx="820" cy="210" r="26" fill="url(#jupiterGlow)" />
+				<text class="label" x="820" y="300">Jupiter</text>
+			</a>
+			<a href={`${base}/saturn`} class="planet-link">
+				<g class="saturn">
+					<ellipse cx="950" cy="210" rx="32" ry="14" />
+					<circle class="planet saturn-core" cx="950" cy="210" r="18" />
+				</g>
+				<text class="label" x="950" y="300">Saturn</text>
+			</a>
+			<a href={`${base}/uranus`} class="planet-link">
+				<circle class="planet uranus" cx="1080" cy="210" r="16" />
+				<text class="label" x="1080" y="300">Uranus</text>
+			</a>
+			<a href={`${base}/neptune`} class="planet-link">
+				<circle class="planet neptune" cx="1180" cy="210" r="16" />
+				<text class="label" x="1180" y="300">Neptune</text>
+			</a>
+
+			<a href={`${base}/comets`} class="planet-link">
+				<path class="comet" d="M1340 170 l30 10 -30 10 z" />
+				<circle class="comet-core" cx="1340" cy="180" r="6" />
+				<text class="label" x="1340" y="300">Comets</text>
+			</a>
+			<a href={`${base}/asteroids`} class="planet-link">
+				<g class="rock">
+					<circle cx="1420" cy="210" r="8" />
+					<circle cx="1436" cy="200" r="5" />
+				</g>
+				<text class="label" x="1430" y="300">Asteroids</text>
+			</a>
+			<a href={`${base}/satellites`} class="planet-link">
+				<g class="sat">
+					<rect x="1500" y="190" width="18" height="18" rx="3" />
+					<rect x="1482" y="196" width="12" height="6" rx="2" />
+					<rect x="1524" y="196" width="12" height="6" rx="2" />
+				</g>
+				<text class="label" x="1510" y="300">Satellites</text>
+			</a>
+		</svg>
 	</div>
 </main>
 
@@ -63,98 +145,115 @@
 		color: rgba(233, 236, 255, 0.7);
 	}
 
-	.track {
-		display: grid;
-		gap: 0.9rem;
-		align-items: center;
+	.canvas {
+		width: 100%;
+		overflow-x: auto;
+		padding-bottom: 1rem;
 	}
 
-	.node {
-		display: grid;
-		grid-auto-flow: column;
-		align-items: center;
-		justify-content: start;
-		gap: 0.8rem;
-		padding: 0.75rem 1rem;
-		border-radius: 999px;
-		border: 1px solid rgba(255, 255, 255, 0.08);
-		background: rgba(10, 12, 20, 0.75);
-		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-		text-decoration: none;
-		color: inherit;
-		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	.map {
+		width: min(1600px, 100%);
+		height: auto;
 	}
 
-	.node:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+	.path {
+		stroke: rgba(255, 255, 255, 0.1);
+		stroke-width: 2;
 	}
 
-	.dot {
-		width: 16px;
-		height: 16px;
-		border-radius: 50%;
-		background: currentColor;
-		box-shadow: 0 0 14px currentColor;
+	.planet-link {
+		cursor: pointer;
+	}
+
+	.planet-link:hover .label,
+	.group-link:hover .group {
+		fill: #ffffff;
 	}
 
 	.label {
-		font-size: 1rem;
-		letter-spacing: 0.06em;
+		fill: rgba(233, 236, 255, 0.8);
+		font-size: 14px;
+		text-anchor: middle;
+		letter-spacing: 0.08em;
 		text-transform: uppercase;
 	}
 
-	.node.sun {
-		color: #ffd36b;
+	.label.small {
+		font-size: 11px;
+		letter-spacing: 0.06em;
 	}
 
-	.node.group {
-		color: #9bdcff;
+	.group {
+		fill: rgba(155, 220, 255, 0.8);
+		font-size: 16px;
+		text-anchor: middle;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
 	}
 
-	.node.inner {
-		color: #ff9a7a;
+	.sun-core {
+		fill: #fff0b3;
+		filter: drop-shadow(0 0 18px rgba(255, 200, 107, 0.65));
 	}
 
-	.node.earth {
-		color: #5ce1ff;
+	.planet {
+		fill: #ff9a7a;
 	}
 
-	.node.moon {
-		color: #d9e1ff;
+	.planet.venus {
+		fill: #ffc86b;
 	}
 
-	.node.belt {
-		color: #c8b7ff;
+	.planet.mars {
+		fill: #ff7a6b;
 	}
 
-	.node.outer {
-		color: #6b8bff;
+	.planet.jupiter {
+		filter: drop-shadow(0 0 16px rgba(244, 192, 134, 0.45));
 	}
 
-	.node.comet {
-		color: #9ff0ff;
+	.planet.uranus {
+		fill: #8cf0ff;
 	}
 
-	.node.asteroid {
-		color: #ffb07b;
+	.planet.neptune {
+		fill: #6b8bff;
 	}
 
-	.node.sat {
-		color: #8bf7c7;
+	.moon {
+		fill: #d9e1ff;
 	}
 
-	@media (min-width: 900px) {
-		.track {
-			grid-auto-flow: column;
-			grid-auto-columns: minmax(160px, 1fr);
-			gap: 1rem;
-			overflow-x: auto;
-			padding-bottom: 0.5rem;
-		}
+	.belt circle,
+	.rock circle {
+		fill: #c8b7ff;
+	}
 
-		.node {
-			justify-content: center;
+	.saturn ellipse {
+		fill: rgba(255, 214, 138, 0.4);
+		stroke: rgba(255, 214, 138, 0.7);
+		stroke-width: 2;
+	}
+
+	.saturn-core {
+		fill: #ffd6a1;
+	}
+
+	.comet {
+		fill: rgba(159, 240, 255, 0.6);
+	}
+
+	.comet-core {
+		fill: #c6f6ff;
+	}
+
+	.sat rect {
+		fill: #8bf7c7;
+	}
+
+	@media (max-width: 900px) {
+		.map {
+			width: 1200px;
 		}
 	}
 </style>
