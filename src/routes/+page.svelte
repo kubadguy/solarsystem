@@ -55,10 +55,17 @@
 <style>
 	:global(body) {
 		margin: 0;
-		background: radial-gradient(circle at 20% 20%, #1b1e3f, #0a0b12 55%, #05060a);
+		background:
+			radial-gradient(circle at 15% 20%, rgba(35, 40, 90, 0.95), transparent 45%),
+			radial-gradient(circle at 85% 10%, rgba(0, 150, 255, 0.35), transparent 40%),
+			radial-gradient(circle at 20% 80%, rgba(130, 90, 255, 0.3), transparent 45%),
+			radial-gradient(circle at 80% 85%, rgba(0, 214, 255, 0.28), transparent 40%),
+			radial-gradient(circle at 50% 50%, #0a0b12 0%, #05060a 60%);
+		background-size: 160% 160%;
+		animation: glowshift 18s ease-in-out infinite;
 		color: #e9ecff;
 		font-family: "Space Grotesk", system-ui, sans-serif;
-		min-height: 100vh;
+		min-height: 100svh;
 	}
 
 	:global(a) {
@@ -68,7 +75,7 @@
 
 	.hero {
 		position: relative;
-		min-height: 100vh;
+		min-height: 100svh;
 		display: grid;
 		place-items: center;
 		gap: 3.5rem;
@@ -279,6 +286,16 @@
 		}
 		to {
 			transform: translateY(-30px);
+		}
+	}
+
+	@keyframes glowshift {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		50% {
+			background-position: 100% 50%;
 		}
 	}
 
