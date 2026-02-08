@@ -1,5 +1,7 @@
 <script>
 	import { base } from '$app/paths';
+	import { goto } from '$app/navigation';
+
 	const imageUrl =
 		'https://upload.wikimedia.org/wikipedia/commons/d/d9/Solar_System_graphic_by_NASA.png';
 
@@ -12,7 +14,7 @@
 		{ id: 'mars', label: 'Mars', x: 24.8, y: 63.5, size: 30 },
 		{ id: 'asteroid-belt', label: 'Asteroid Belt', x: 33.5, y: 58, size: 70 },
 		{ id: 'ceres', label: 'Ceres', x: 31, y: 70, size: 26 },
-		{ id: 'jupiter', label: 'Jupiter', x: 43, y: 64, size: 80 },
+		{ id: 'jupiter', label: 'Jupiter', x: 45.5, y: 62.5, size: 80 },
 		{ id: 'saturn', label: 'Saturn', x: 54, y: 52, size: 80 },
 		{ id: 'comets', label: 'Comets', x: 63.5, y: 75, size: 44 },
 		{ id: 'uranus', label: 'Uranus', x: 71.5, y: 40, size: 52 },
@@ -22,6 +24,29 @@
 		{ id: 'kuiper-belt-objects', label: 'Kuiper Belt Objects', x: 93, y: 46, size: 70 },
 		{ id: 'eris', label: 'Eris', x: 90, y: 20, size: 34 }
 	];
+
+	function onClick(event) {
+		const target = event.currentTarget;
+		const rect = target.getBoundingClientRect();
+		const x = ((event.clientX - rect.left) / rect.width) * 100;
+		const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+		let closest = hotspots[0];
+		let closestScore = Infinity;
+
+		for (const spot of hotspots) {
+			const dx = x - spot.x;
+			const dy = y - spot.y;
+			const weight = Math.max(spot.size, 24) / 60;
+			const score = (dx * dx + dy * dy) / weight;
+			if (score < closestScore) {
+				closestScore = score;
+				closest = spot;
+			}
+		}
+
+		goto(`${base}/${closest.id}`);
+	}
 </script>
 
 <main class="system">
@@ -31,18 +56,13 @@
 	</header>
 
 	<div class="canvas">
-		<div class="image-frame">
+		<div class="image-frame" on:click={onClick} role="button" tabindex="0">
 			<img src={imageUrl} alt="Solar system with the sun and planets" />
 			<div class="hotspots">
 				{#each hotspots as spot}
-					<a
-						class="hotspot"
-						href={`${base}/${spot.id}`}
-						style={`--x:${spot.x}%; --y:${spot.y}%; --size:${spot.size}px;`}
-					>
-						<span class="dot" aria-hidden="true"></span>
+					<span class="hotspot" style={`--x:${spot.x}%; --y:${spot.y}%; --size:${spot.size}px;`}>
 						<span class="sr-only">{spot.label}</span>
-					</a>
+					</span>
 				{/each}
 			</div>
 		</div>
@@ -89,6 +109,7 @@
 		overflow: hidden;
 		box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
 		border: 1px solid rgba(255, 255, 255, 0.08);
+		cursor: pointer;
 	}
 
 	.image-frame img {
@@ -109,39 +130,18 @@
 		left: var(--x);
 		top: var(--y);
 		transform: translate(-50%, -50%);
-		text-decoration: none;
-		color: #e9ecff;
-		display: grid;
-		justify-items: center;
-		gap: 0.35rem;
-		min-width: 90px;
+		width: var(--size);
+		height: var(--size);
 	}
 
 	.hotspot::before {
 		content: "";
 		position: absolute;
-		width: var(--size);
-		height: var(--size);
+		inset: 0;
 		border-radius: 999px;
 		background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 70%);
-		opacity: 0;
-		transition: opacity 0.2s ease;
-	}
-
-	.hotspot:hover::before {
-		opacity: 1;
-	}
-
-	.dot {
-		width: clamp(10px, 1.2vw, 16px);
-		height: clamp(10px, 1.2vw, 16px);
-		border-radius: 50%;
-		background: #ffffff;
-		box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
-	}
-
-	.label {
-		font-size: 0.75rem;
+		opacity: 0.12;
+		pointer-events: none;
 	}
 
 	.sr-only {
