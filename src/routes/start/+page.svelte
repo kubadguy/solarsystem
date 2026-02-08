@@ -5,47 +5,70 @@
 	const imageUrl =
 		'https://upload.wikimedia.org/wikipedia/commons/d/d9/Solar_System_graphic_by_NASA.png';
 
-	const hotspots = [
-		{ id: 'sun', label: 'Sun', x: 5, y: 68, size: 140 },
-		{ id: 'mercury', label: 'Mercury', x: 15.5, y: 68, size: 28 },
-		{ id: 'venus', label: 'Venus', x: 18.2, y: 66.5, size: 34 },
-		{ id: 'earth', label: 'Earth', x: 20.5, y: 64.5, size: 36 },
-		{ id: 'moon', label: 'Moon', x: 22.4, y: 61, size: 22 },
-		{ id: 'mars', label: 'Mars', x: 24.8, y: 63.5, size: 30 },
-		{ id: 'asteroid-belt', label: 'Asteroid Belt', x: 33.5, y: 58, size: 70 },
-		{ id: 'ceres', label: 'Ceres', x: 31, y: 70, size: 26 },
-		{ id: 'jupiter', label: 'Jupiter', x: 45.5, y: 62.5, size: 80 },
-		{ id: 'saturn', label: 'Saturn', x: 54, y: 52, size: 80 },
-		{ id: 'comets', label: 'Comets', x: 63.5, y: 75, size: 44 },
-		{ id: 'uranus', label: 'Uranus', x: 71.5, y: 40, size: 52 },
-		{ id: 'neptune', label: 'Neptune', x: 76.5, y: 36, size: 52 },
-		{ id: 'pluto', label: 'Pluto', x: 86, y: 66, size: 36 },
-		{ id: 'makemake', label: 'Makemake', x: 90, y: 80, size: 32 },
-		{ id: 'kuiper-belt-objects', label: 'Kuiper Belt Objects', x: 93, y: 46, size: 70 },
-		{ id: 'eris', label: 'Eris', x: 90, y: 20, size: 34 }
+	const ref = { w: 800, h: 500 };
+	const rawHotspots = [
+		{ id: 'sun', label: 'Sun', x: 80, y: 360 },
+		{ id: 'mercury', label: 'Mercury', x: 185, y: 360 },
+		{ id: 'venus', label: 'Venus', x: 215, y: 350 },
+		{ id: 'earth', label: 'Earth', x: 245, y: 355 },
+		{ id: 'moon', label: 'Moon', x: 260, y: 335 },
+		{ id: 'mars', label: 'Mars', x: 275, y: 350 },
+		{ id: 'asteroid-belt', label: 'Asteroid Belt', x: 330, y: 350 },
+		{ id: 'ceres', label: 'Ceres', x: 360, y: 420 },
+		{ id: 'jupiter', label: 'Jupiter', x: 430, y: 445 },
+		{ id: 'saturn', label: 'Saturn', x: 460, y: 300 },
+		{ id: 'uranus', label: 'Uranus', x: 560, y: 285 },
+		{ id: 'neptune', label: 'Neptune', x: 610, y: 295 },
+		{ id: 'pluto', label: 'Pluto', x: 665, y: 405 },
+		{ id: 'makemake', label: 'Makemake', x: 705, y: 450 },
+		{ id: 'eris', label: 'Eris', x: 720, y: 210 },
+		{ id: 'kuiper-belt-objects', label: 'Kuiper Belt Objects', x: 710, y: 330 },
+		{ id: 'comets', label: 'Comets', x: 565, y: 455 }
 	];
+	const hotspots = rawHotspots.map((spot) => ({
+		...spot,
+		px: (spot.x / ref.w) * 100,
+		py: (spot.y / ref.h) * 100
+	}));
 
-	function onClick(event) {
-		const target = event.currentTarget;
-		const rect = target.getBoundingClientRect();
-		const x = ((event.clientX - rect.left) / rect.width) * 100;
-		const y = ((event.clientY - rect.top) / rect.height) * 100;
+	let hoveredId = null;
 
+	function getNearest(x, y) {
 		let closest = hotspots[0];
 		let closestScore = Infinity;
 
 		for (const spot of hotspots) {
-			const dx = x - spot.x;
-			const dy = y - spot.y;
-			const weight = Math.max(spot.size, 24) / 60;
-			const score = (dx * dx + dy * dy) / weight;
+			const dx = x - spot.px;
+			const dy = y - spot.py;
+			const score = dx * dx + dy * dy;
 			if (score < closestScore) {
 				closestScore = score;
 				closest = spot;
 			}
 		}
 
+		return closest;
+	}
+
+	function onClick(event) {
+		const target = event.currentTarget;
+		const rect = target.getBoundingClientRect();
+		const x = ((event.clientX - rect.left) / rect.width) * 100;
+		const y = ((event.clientY - rect.top) / rect.height) * 100;
+		const closest = getNearest(x, y);
 		goto(`${base}/${closest.id}`);
+	}
+
+	function onMove(event) {
+		const target = event.currentTarget;
+		const rect = target.getBoundingClientRect();
+		const x = ((event.clientX - rect.left) / rect.width) * 100;
+		const y = ((event.clientY - rect.top) / rect.height) * 100;
+		hoveredId = getNearest(x, y)?.id ?? null;
+	}
+
+	function onLeave() {
+		hoveredId = null;
 	}
 </script>
 
@@ -56,11 +79,21 @@
 	</header>
 
 	<div class="canvas">
-		<div class="image-frame" on:click={onClick} role="button" tabindex="0">
+		<div
+			class="image-frame"
+			on:click={onClick}
+			on:mousemove={onMove}
+			on:mouseleave={onLeave}
+			role="button"
+			tabindex="0"
+		>
 			<img src={imageUrl} alt="Solar system with the sun and planets" />
 			<div class="hotspots">
 				{#each hotspots as spot}
-					<span class="hotspot" style={`--x:${spot.x}%; --y:${spot.y}%; --size:${spot.size}px;`}>
+					<span
+						class={`hotspot ${hoveredId === spot.id ? 'active' : ''}`}
+						style={`--x:${spot.px}%; --y:${spot.py}%;`}
+					>
 						<span class="sr-only">{spot.label}</span>
 					</span>
 				{/each}
@@ -130,8 +163,8 @@
 		left: var(--x);
 		top: var(--y);
 		transform: translate(-50%, -50%);
-		width: var(--size);
-		height: var(--size);
+		width: 52px;
+		height: 52px;
 	}
 
 	.hotspot::before {
@@ -139,9 +172,15 @@
 		position: absolute;
 		inset: 0;
 		border-radius: 999px;
-		background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 70%);
-		opacity: 0.12;
+		background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+		opacity: 0;
+		transition: opacity 0.15s ease, transform 0.15s ease;
 		pointer-events: none;
+	}
+
+	.hotspot.active::before {
+		opacity: 0.85;
+		transform: scale(1.15);
 	}
 
 	.sr-only {
