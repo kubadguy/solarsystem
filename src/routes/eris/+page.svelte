@@ -120,7 +120,7 @@
 			<div class="eris-halo"></div>
 		</div>
 
-		{#each activeFacts as fact, index (fact.title)}
+		{#each activeFacts as fact, index (index)}
 			<div class={`fact orbit-${index + 1}`}>
 				<h3>{fact.title}</h3>
 				<p>{fact.text}</p>
