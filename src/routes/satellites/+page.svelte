@@ -1,13 +1,13 @@
 <script>
-	const sections = ['id-overview', 'id-members', 'id-features', 'id-distance', 'id-compare', 'id-quiz'];
-	const factsBySection = {'id-overview': [{'title': 'Overview', 'text': 'Basic facts and identity.'}, {'title': 'Overview', 'text': 'Where it is and what it is made of.'}, {'title': 'Overview', 'text': 'Key traits you can remember.'}, {'title': 'Overview', 'text': 'Why it matters.'}, {'title': 'Overview', 'text': 'Some may hide oceans.'}], 'id-members': [{'title': 'Members', 'text': 'List the members.'}, {'title': 'Members', 'text': 'Order from the Sun.'}, {'title': 'Members', 'text': 'Size comparisons.'}, {'title': 'Members', 'text': 'Shared traits.'}, {'title': 'Members', 'text': 'Unique traits.'}], 'id-features': [{'title': 'Features', 'text': 'Rings, storms, bands.'}, {'title': 'Features', 'text': 'Gas or ice makeup.'}, {'title': 'Features', 'text': 'Large size.'}, {'title': 'Features', 'text': 'Cold temperatures.'}, {'title': 'Features', 'text': 'Fast winds.'}], 'id-distance': [{'title': 'Distance', 'text': 'Distance from the Sun.'}, {'title': 'Distance', 'text': 'Long year lengths.'}, {'title': 'Distance', 'text': 'Less sunlight.'}, {'title': 'Distance', 'text': 'Colder temperatures.'}, {'title': 'Distance', 'text': 'Big orbits.'}], 'id-compare': [{'title': 'Compare', 'text': 'Compare size and air.'}, {'title': 'Compare', 'text': 'Moons and rings.'}, {'title': 'Compare', 'text': 'Temperature range.'}, {'title': 'Compare', 'text': 'Surface types.'}, {'title': 'Compare', 'text': 'Exploration.'}], 'id-quiz': [{'title': 'Mini Test', 'text': 'Think deep.'}, {'title': 'Mini Test', 'text': 'Short answers and multi-select.'}, {'title': 'Mini Test', 'text': 'Be precise.'}, {'title': 'Mini Test', 'text': 'Reason it out.'}, {'title': 'Mini Test', 'text': 'Challenge mode.'}]};
+	const sections = ["id-overview", "id-members", "id-features", "id-distance", "id-compare", "id-quiz"];
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-members": [{"title": "Core Idea", "text": "Group members."}, {"title": "Key Detail", "text": "Order and key traits."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-features": [{"title": "Core Idea", "text": "Shared features."}, {"title": "Key Detail", "text": "Rings, storms, and size."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-distance": [{"title": "Core Idea", "text": "Distance from the Sun."}, {"title": "Key Detail", "text": "Longer years and colder temps."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-compare": [{"title": "Core Idea", "text": "Compare size and atmosphere."}, {"title": "Key Detail", "text": "What makes each unique."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'four', q2: ['a','b'], q3: 'order', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'four', q2: ["planets", "group"], q3: 'order', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,56 +89,56 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>Natural satellites around planets.</p>
-			<p>Some may hide oceans.</p>
+			<p>What it is and where it belongs.</p>
+			<p>Key identity facts to remember.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-members'} id="id-members">
 			<h2>Members</h2>
-			<p>Natural satellites around planets.</p>
-			<p>Some may hide oceans.</p>
+			<p>Group members.</p>
+			<p>Order and key traits.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-features'} id="id-features">
 			<h2>Features</h2>
-			<p>Natural satellites around planets.</p>
-			<p>Some may hide oceans.</p>
+			<p>Shared features.</p>
+			<p>Rings, storms, and size.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-distance'} id="id-distance">
 			<h2>Distance</h2>
-			<p>Natural satellites around planets.</p>
-			<p>Some may hide oceans.</p>
+			<p>Distance from the Sun.</p>
+			<p>Longer years and colder temps.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-compare'} id="id-compare">
 			<h2>Compare</h2>
-			<p>Natural satellites around planets.</p>
-			<p>Some may hide oceans.</p>
+			<p>Compare size and atmosphere.</p>
+			<p>What makes each unique.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. Short answer:</p>
+					<p>1. There are ______ worlds in this group.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
 					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="a" bind:group={quizAnswers.q2} /> Option A</label>
-					<label><input type="checkbox" value="b" bind:group={quizAnswers.q2} /> Option B</label>
-					<label><input type="checkbox" value="c" bind:group={quizAnswers.q2} /> Option C</label>
+					<label><input type="checkbox" value="planets" bind:group={quizAnswers.q2} /> They are planets</label>
+					<label><input type="checkbox" value="group" bind:group={quizAnswers.q2} /> They share traits</label>
+					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> They all have rings</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer:</p>
+					<p>3. Short answer: Name one member.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
-					<p>4. Choose one:</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> A</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> B</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> C</label>
+					<p>4. Which statement is most accurate?</p>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> They are all the same</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> They share key features</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> They are all comets</label>
 				</div>
 				<div class="question">
-					<p>5. True or False:</p>
-					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
-					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
+					<p>5. True or False: This group orbits the Sun.</p>
+					<label><input type="radio" name="q5" value="true" bind:group={{quizAnswers.q5}} /> True</label>
+					<label><input type="radio" name="q5" value="false" bind:group={{quizAnswers.q5}} /> False</label>
 				</div>
 				<button class="submit" type="button" on:click={submitQuiz}>Check score</button>
 				{#if score}
@@ -185,7 +185,7 @@
 	.panel { display: none; background: rgba(12, 16, 28, 0.78); border-radius: 18px; padding: 1.3rem 1.6rem; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45); animation: fadeIn 0.35s ease; }
 	.panel[data-active='true'] { display: block; }
 	.panel h2 { margin: 0 0 0.6rem; }
-	.panel p,
+	.panel p { color: rgba(246, 247, 255, 0.8); line-height: 1.6; }
 	.quiz { display: grid; gap: 0.8rem; }
 	.question { display: grid; gap: 0.35rem; font-size: 0.95rem; }
 	.question label { display: flex; align-items: center; gap: 0.4rem; }
@@ -197,4 +197,4 @@
 	@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 	@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 	@media (max-width: 900px) { .top { grid-template-columns: 1fr; } .jump { grid-template-columns: repeat(3, minmax(0, 1fr)); } .fact { display: none; } .satellites-layout { min-height: 240px; } }
-</style>
++</style>

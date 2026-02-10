@@ -1,13 +1,13 @@
 <script>
-	const sections = ['id-overview', 'id-surface', 'id-atmosphere', 'id-orbit', 'id-missions', 'id-quiz'];
-	const factsBySection = {'id-overview': [{'title': 'Overview', 'text': 'Basic facts and identity.'}, {'title': 'Overview', 'text': 'Where it is and what it is made of.'}, {'title': 'Overview', 'text': 'Key traits you can remember.'}, {'title': 'Overview', 'text': 'Why it matters.'}, {'title': 'Overview', 'text': 'Year: 88 days.'}], 'id-surface': [{'title': 'Surface', 'text': 'Craters, plains, and mountains.'}, {'title': 'Surface', 'text': 'Signs of impacts and change.'}, {'title': 'Surface', 'text': 'Older and newer regions.'}, {'title': 'Surface', 'text': 'Textures and colors.'}, {'title': 'Surface', 'text': 'Interesting landmarks.'}], 'id-atmosphere': [{'title': 'Atmosphere', 'text': 'Thickness and composition.'}, {'title': 'Atmosphere', 'text': 'Weather and clouds.'}, {'title': 'Atmosphere', 'text': 'Pressure compared to Earth.'}, {'title': 'Atmosphere', 'text': 'Heat trapping or loss.'}, {'title': 'Atmosphere', 'text': 'Wind strength.'}], 'id-orbit': [{'title': 'Orbit', 'text': 'Oval path around the Sun.'}, {'title': 'Orbit', 'text': 'Year length and distance.'}, {'title': 'Orbit', 'text': 'Tilt and seasons.'}, {'title': 'Orbit', 'text': 'Speed changes.'}, {'title': 'Orbit', 'text': 'Special orbit facts.'}], 'id-missions': [{'title': 'Missions', 'text': 'Important spacecraft visits.'}, {'title': 'Missions', 'text': 'Images and maps collected.'}, {'title': 'Missions', 'text': 'Discoveries from missions.'}, {'title': 'Missions', 'text': 'Future exploration.'}, {'title': 'Missions', 'text': 'Why missions matter.'}], 'id-quiz': [{'title': 'Mini Test', 'text': 'Think deep.'}, {'title': 'Mini Test', 'text': 'Short answers and multi-select.'}, {'title': 'Mini Test', 'text': 'Be precise.'}, {'title': 'Mini Test', 'text': 'Reason it out.'}, {'title': 'Mini Test', 'text': 'Challenge mode.'}]};
+	const sections = ["id-overview", "id-surface", "id-atmosphere", "id-orbit", "id-missions", "id-quiz"];
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-surface": [{"title": "Core Idea", "text": "What the surface looks like."}, {"title": "Key Detail", "text": "Craters, plains, mountains, and marks."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-atmosphere": [{"title": "Core Idea", "text": "Air, clouds, and pressure."}, {"title": "Key Detail", "text": "How the atmosphere changes heat and weather."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-orbit": [{"title": "Core Idea", "text": "How it travels around the Sun."}, {"title": "Key Detail", "text": "Year length and distance details."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-missions": [{"title": "Core Idea", "text": "Spacecraft discoveries."}, {"title": "Key Detail", "text": "What missions revealed about this world."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'rocky', q2: ['a','b'], q3: '88', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'rocky', q2: ["close", "solid"], q3: 'craters', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,56 +89,56 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>Smallest planet and closest to the Sun.</p>
-			<p>Year: 88 days.</p>
+			<p>What it is and where it belongs.</p>
+			<p>Key identity facts to remember.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-surface'} id="id-surface">
 			<h2>Surface</h2>
-			<p>Smallest planet and closest to the Sun.</p>
-			<p>Year: 88 days.</p>
+			<p>What the surface looks like.</p>
+			<p>Craters, plains, mountains, and marks.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-atmosphere'} id="id-atmosphere">
 			<h2>Atmosphere</h2>
-			<p>Smallest planet and closest to the Sun.</p>
-			<p>Year: 88 days.</p>
+			<p>Air, clouds, and pressure.</p>
+			<p>How the atmosphere changes heat and weather.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbit'} id="id-orbit">
 			<h2>Orbit</h2>
-			<p>Smallest planet and closest to the Sun.</p>
-			<p>Year: 88 days.</p>
+			<p>How it travels around the Sun.</p>
+			<p>Year length and distance details.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-missions'} id="id-missions">
 			<h2>Missions</h2>
-			<p>Smallest planet and closest to the Sun.</p>
-			<p>Year: 88 days.</p>
+			<p>Spacecraft discoveries.</p>
+			<p>What missions revealed about this world.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. Short answer:</p>
+					<p>1. This world is a ______ planet.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
 					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="a" bind:group={quizAnswers.q2} /> Option A</label>
-					<label><input type="checkbox" value="b" bind:group={quizAnswers.q2} /> Option B</label>
-					<label><input type="checkbox" value="c" bind:group={quizAnswers.q2} /> Option C</label>
+					<label><input type="checkbox" value="close" bind:group={quizAnswers.q2} /> Close to the Sun</label>
+					<label><input type="checkbox" value="solid" bind:group={quizAnswers.q2} /> Solid surface</label>
+					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer:</p>
+					<p>3. Short answer: Name one surface feature.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
-					<p>4. Choose one:</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> A</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> B</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> C</label>
+					<p>4. Which statement is most accurate?</p>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has no surface</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It has a solid surface</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a star</label>
 				</div>
 				<div class="question">
-					<p>5. True or False:</p>
-					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
-					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
+					<p>5. True or False: It orbits the Sun.</p>
+					<label><input type="radio" name="q5" value="true" bind:group={{quizAnswers.q5}} /> True</label>
+					<label><input type="radio" name="q5" value="false" bind:group={{quizAnswers.q5}} /> False</label>
 				</div>
 				<button class="submit" type="button" on:click={submitQuiz}>Check score</button>
 				{#if score}
@@ -185,7 +185,7 @@
 	.panel { display: none; background: rgba(20, 15, 14, 0.78); border-radius: 18px; padding: 1.3rem 1.6rem; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45); animation: fadeIn 0.35s ease; }
 	.panel[data-active='true'] { display: block; }
 	.panel h2 { margin: 0 0 0.6rem; }
-	.panel p,
+	.panel p { color: rgba(246, 247, 255, 0.8); line-height: 1.6; }
 	.quiz { display: grid; gap: 0.8rem; }
 	.question { display: grid; gap: 0.35rem; font-size: 0.95rem; }
 	.question label { display: flex; align-items: center; gap: 0.4rem; }
@@ -197,4 +197,4 @@
 	@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 	@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 	@media (max-width: 900px) { .top { grid-template-columns: 1fr; } .jump { grid-template-columns: repeat(3, minmax(0, 1fr)); } .fact { display: none; } .mercury-layout { min-height: 240px; } }
-</style>
++</style>

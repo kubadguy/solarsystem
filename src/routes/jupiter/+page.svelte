@@ -1,13 +1,13 @@
 <script>
-	const sections = ['id-overview', 'id-atmosphere', 'id-storms', 'id-moons', 'id-rings', 'id-quiz'];
-	const factsBySection = {'id-overview': [{'title': 'Overview', 'text': 'Basic facts and identity.'}, {'title': 'Overview', 'text': 'Where it is and what it is made of.'}, {'title': 'Overview', 'text': 'Key traits you can remember.'}, {'title': 'Overview', 'text': 'Why it matters.'}, {'title': 'Overview', 'text': 'Great Red Spot storm.'}], 'id-atmosphere': [{'title': 'Atmosphere', 'text': 'Thickness and composition.'}, {'title': 'Atmosphere', 'text': 'Weather and clouds.'}, {'title': 'Atmosphere', 'text': 'Pressure compared to Earth.'}, {'title': 'Atmosphere', 'text': 'Heat trapping or loss.'}, {'title': 'Atmosphere', 'text': 'Wind strength.'}], 'id-storms': [{'title': 'Storms', 'text': 'Big storms and bands.'}, {'title': 'Storms', 'text': 'Fast winds and jets.'}, {'title': 'Storms', 'text': 'Long-lasting weather.'}, {'title': 'Storms', 'text': 'Energy from inside.'}, {'title': 'Storms', 'text': 'Storm colors and shapes.'}], 'id-moons': [{'title': 'Moons', 'text': 'Major moons to know.'}, {'title': 'Moons', 'text': 'Icy and rocky types.'}, {'title': 'Moons', 'text': 'Interesting features.'}, {'title': 'Moons', 'text': 'Possible oceans.'}, {'title': 'Moons', 'text': 'Moon systems.'}], 'id-rings': [{'title': 'Rings', 'text': 'Rings made of ice and dust.'}, {'title': 'Rings', 'text': 'Thin but wide rings.'}, {'title': 'Rings', 'text': 'Gaps and divisions.'}, {'title': 'Rings', 'text': 'Ring colors.'}, {'title': 'Rings', 'text': 'Changes over time.'}], 'id-quiz': [{'title': 'Mini Test', 'text': 'Think deep.'}, {'title': 'Mini Test', 'text': 'Short answers and multi-select.'}, {'title': 'Mini Test', 'text': 'Be precise.'}, {'title': 'Mini Test', 'text': 'Reason it out.'}, {'title': 'Mini Test', 'text': 'Challenge mode.'}]};
+	const sections = ["id-overview", "id-atmosphere", "id-storms", "id-moons", "id-rings", "id-quiz"];
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-atmosphere": [{"title": "Core Idea", "text": "Air, clouds, and pressure."}, {"title": "Key Detail", "text": "How the atmosphere changes heat and weather."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-storms": [{"title": "Core Idea", "text": "Big storms and fast winds."}, {"title": "Key Detail", "text": "Weather that can last for years."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-moons": [{"title": "Core Idea", "text": "Major moons and their traits."}, {"title": "Key Detail", "text": "Some are icy, some are volcanic."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-rings": [{"title": "Core Idea", "text": "Rings are icy and thin."}, {"title": "Key Detail", "text": "Gaps and divisions shape the system."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'giant', q2: ['a','b'], q3: 'rings', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'gas', q2: ["storms", "rings"], q3: 'moons', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,56 +89,56 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>Largest planet with storms and stripes.</p>
-			<p>Great Red Spot storm.</p>
+			<p>What it is and where it belongs.</p>
+			<p>Key identity facts to remember.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-atmosphere'} id="id-atmosphere">
 			<h2>Atmosphere</h2>
-			<p>Largest planet with storms and stripes.</p>
-			<p>Great Red Spot storm.</p>
+			<p>Air, clouds, and pressure.</p>
+			<p>How the atmosphere changes heat and weather.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-storms'} id="id-storms">
 			<h2>Storms</h2>
-			<p>Largest planet with storms and stripes.</p>
-			<p>Great Red Spot storm.</p>
+			<p>Big storms and fast winds.</p>
+			<p>Weather that can last for years.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-moons'} id="id-moons">
 			<h2>Moons</h2>
-			<p>Largest planet with storms and stripes.</p>
-			<p>Great Red Spot storm.</p>
+			<p>Major moons and their traits.</p>
+			<p>Some are icy, some are volcanic.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-rings'} id="id-rings">
 			<h2>Rings</h2>
-			<p>Largest planet with storms and stripes.</p>
-			<p>Great Red Spot storm.</p>
+			<p>Rings are icy and thin.</p>
+			<p>Gaps and divisions shape the system.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. Short answer:</p>
+					<p>1. This world is a ______ giant.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
 					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="a" bind:group={quizAnswers.q2} /> Option A</label>
-					<label><input type="checkbox" value="b" bind:group={quizAnswers.q2} /> Option B</label>
-					<label><input type="checkbox" value="c" bind:group={quizAnswers.q2} /> Option C</label>
+					<label><input type="checkbox" value="storms" bind:group={quizAnswers.q2} /> Has storms</label>
+					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
+					<label><input type="checkbox" value="rocky" bind:group={quizAnswers.q2} /> Mostly rock</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer:</p>
+					<p>3. Short answer: Name a feature of this planet.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
-					<p>4. Choose one:</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> A</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> B</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> C</label>
+					<p>4. Which statement is most accurate?</p>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has a solid surface</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It is mostly gas</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a comet</label>
 				</div>
 				<div class="question">
-					<p>5. True or False:</p>
-					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
-					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
+					<p>5. True or False: It has many moons.</p>
+					<label><input type="radio" name="q5" value="true" bind:group={{quizAnswers.q5}} /> True</label>
+					<label><input type="radio" name="q5" value="false" bind:group={{quizAnswers.q5}} /> False</label>
 				</div>
 				<button class="submit" type="button" on:click={submitQuiz}>Check score</button>
 				{#if score}
@@ -185,7 +185,7 @@
 	.panel { display: none; background: rgba(20, 15, 12, 0.78); border-radius: 18px; padding: 1.3rem 1.6rem; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45); animation: fadeIn 0.35s ease; }
 	.panel[data-active='true'] { display: block; }
 	.panel h2 { margin: 0 0 0.6rem; }
-	.panel p,
+	.panel p { color: rgba(246, 247, 255, 0.8); line-height: 1.6; }
 	.quiz { display: grid; gap: 0.8rem; }
 	.question { display: grid; gap: 0.35rem; font-size: 0.95rem; }
 	.question label { display: flex; align-items: center; gap: 0.4rem; }
@@ -197,4 +197,4 @@
 	@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 	@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 	@media (max-width: 900px) { .top { grid-template-columns: 1fr; } .jump { grid-template-columns: repeat(3, minmax(0, 1fr)); } .fact { display: none; } .jupiter-layout { min-height: 240px; } }
-</style>
++</style>
