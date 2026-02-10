@@ -137,8 +137,8 @@
 				</div>
 				<div class="question">
 					<p>5. True or False: It orbits the Sun.</p>
-					<label><input type="radio" name="q5" value="true" bind:group={{quizAnswers.q5}} /> True</label>
-					<label><input type="radio" name="q5" value="false" bind:group={{quizAnswers.q5}} /> False</label>
+					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
+					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>
 				<button class="submit" type="button" on:click={submitQuiz}>Check score</button>
 				{#if score}
