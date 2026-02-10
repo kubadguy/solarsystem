@@ -422,10 +422,6 @@
 	}
 
 	.panel p,
-	.panel li {
-		color: rgba(238, 242, 255, 0.8);
-		line-height: 1.6;
-	}
 
 	.quiz {
 		display: grid;

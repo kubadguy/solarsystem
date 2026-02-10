@@ -419,15 +419,6 @@
 	}
 
 	.panel p,
-	.panel li {
-		color: rgba(246, 243, 255, 0.8);
-		line-height: 1.6;
-	}
-
-	.panel ul {
-		margin: 0 0 0.6rem;
-		padding-left: 1.1rem;
-	}
 
 	.quiz {
 		display: grid;

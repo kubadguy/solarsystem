@@ -186,7 +186,6 @@
 	.panel[data-active='true'] { display: block; }
 	.panel h2 { margin: 0 0 0.6rem; }
 	.panel p,
-	.panel li { color: rgba(246, 247, 255, 0.8); line-height: 1.6; }
 	.quiz { display: grid; gap: 0.8rem; }
 	.question { display: grid; gap: 0.35rem; font-size: 0.95rem; }
 	.question label { display: flex; align-items: center; gap: 0.4rem; }
@@ -198,4 +197,4 @@
 	@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 	@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 	@media (max-width: 900px) { .top { grid-template-columns: 1fr; } .jump { grid-template-columns: repeat(3, minmax(0, 1fr)); } .fact { display: none; } .neptune-layout { min-height: 240px; } }
-+</style>
+</style>
