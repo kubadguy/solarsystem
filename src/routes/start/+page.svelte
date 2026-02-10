@@ -5,7 +5,7 @@
 	const imageUrl =
 		'https://upload.wikimedia.org/wikipedia/commons/d/d9/Solar_System_graphic_by_NASA.png';
 
-	const hotspots = [
+	let hotspots = [
 		{ id: 'sun', label: 'Sun', x: 5, y: 68, size: 140 },
 		{ id: 'mercury', label: 'Mercury', x: 15.5, y: 68, size: 28 },
 		{ id: 'venus', label: 'Venus', x: 18.2, y: 66.5, size: 34 },
@@ -25,35 +25,59 @@
 		{ id: 'eris', label: 'Eris', x: 90, y: 20, size: 34 }
 	];
 
+	let selectedId = hotspots[0]?.id;
+	let lastClick = null;
+
 	function onClick(event) {
 		const target = event.currentTarget;
 		const rect = target.getBoundingClientRect();
 		const x = ((event.clientX - rect.left) / rect.width) * 100;
 		const y = ((event.clientY - rect.top) / rect.height) * 100;
 
-		let closest = hotspots[0];
-		let closestScore = Infinity;
+		lastClick = { x, y };
 
-		for (const spot of hotspots) {
-			const dx = x - spot.x;
-			const dy = y - spot.y;
-			const weight = Math.max(spot.size, 24) / 60;
-			const score = (dx * dx + dy * dy) / weight;
-			if (score < closestScore) {
-				closestScore = score;
-				closest = spot;
-			}
-		}
-
-		goto(`${base}/${closest.id}`);
+		hotspots = hotspots.map((spot) =>
+			spot.id === selectedId ? { ...spot, x: Number(x.toFixed(2)), y: Number(y.toFixed(2)) } : spot
+		);
 	}
 </script>
 
 <main class="system">
 	<header class="title">
 		<h1>Solar System Map</h1>
-		<p>Click any body or region to open its page.</p>
+		<p>Calibration mode: select a target, then click its exact spot on the image.</p>
 	</header>
+
+	<aside class="calibration">
+		<h2>Hitpoint Calibration</h2>
+		<p class="helper">
+			Target: <strong>{hotspots.find((spot) => spot.id === selectedId)?.label}</strong>
+		</p>
+		<div class="select">
+			{#each hotspots as spot}
+				<button
+					type="button"
+					class:active={spot.id === selectedId}
+					on:click={() => (selectedId = spot.id)}
+				>
+					{spot.label}
+				</button>
+			{/each}
+		</div>
+		<div class="readout">
+			<p>Last click: {lastClick ? `${lastClick.x.toFixed(2)}%, ${lastClick.y.toFixed(2)}%` : '—'}</p>
+			<p>Selected coords: {hotspots.find((spot) => spot.id === selectedId)?.x}%,
+				{hotspots.find((spot) => spot.id === selectedId)?.y}%</p>
+		</div>
+		<div class="list">
+			{#each hotspots as spot}
+				<div class="row">
+					<span>{spot.label}</span>
+					<span>{spot.x}%, {spot.y}%</span>
+				</div>
+			{/each}
+		</div>
+	</aside>
 
 	<div class="canvas">
 		<div class="image-frame" on:click={onClick} role="button" tabindex="0">
@@ -81,6 +105,7 @@
 		min-height: 100svh;
 		padding: clamp(2rem, 5vw, 4rem);
 		display: grid;
+		grid-template-columns: minmax(0, 1fr);
 		gap: clamp(1.5rem, 3vw, 2.5rem);
 	}
 
@@ -93,6 +118,72 @@
 	.title p {
 		margin: 0;
 		color: rgba(233, 236, 255, 0.7);
+	}
+
+	.calibration {
+		background: rgba(10, 12, 20, 0.75);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 20px;
+		padding: 1.5rem;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+	}
+
+	.calibration h2 {
+		margin: 0 0 0.75rem;
+		font-family: "Unbounded", "Space Grotesk", system-ui, sans-serif;
+		font-size: 1.3rem;
+	}
+
+	.helper {
+		margin: 0 0 1rem;
+		color: rgba(233, 236, 255, 0.8);
+	}
+
+	.select {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.select button {
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		background: rgba(255, 255, 255, 0.04);
+		color: inherit;
+		padding: 0.4rem 0.8rem;
+		border-radius: 999px;
+		font-size: 0.85rem;
+		cursor: pointer;
+	}
+
+	.select button.active {
+		background: linear-gradient(120deg, #6b5bff, #00d6ff);
+		color: #0b0c14;
+		border-color: transparent;
+	}
+
+	.readout {
+		display: grid;
+		gap: 0.4rem;
+		margin-bottom: 1rem;
+		color: rgba(233, 236, 255, 0.7);
+		font-size: 0.95rem;
+	}
+
+	.list {
+		display: grid;
+		gap: 0.35rem;
+		max-height: 240px;
+		overflow: auto;
+		font-size: 0.9rem;
+	}
+
+	.row {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-bottom: 0.35rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 	}
 
 	.canvas {
@@ -157,6 +248,10 @@
 	}
 
 	@media (max-width: 900px) {
+		.system {
+			grid-template-columns: 1fr;
+		}
+
 		.image-frame {
 			width: 1100px;
 		}
