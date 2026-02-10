@@ -197,4 +197,4 @@
 	@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 	@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 	@media (max-width: 900px) { .top { grid-template-columns: 1fr; } .jump { grid-template-columns: repeat(3, minmax(0, 1fr)); } .fact { display: none; } .outer-planets-layout { min-height: 240px; } }
-+</style>
+</style>
