@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-orbit", "id-surface", "id-moons", "id-discovery", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Kuiper Belt dwarf planet."}, {"title": "Remember", "text": "Discovered in 2005."}, {"title": "Extra", "text": "Remember this point."}], "id-orbit": [{"title": "Core Idea", "text": "How it travels around the Sun."}, {"title": "Key Detail", "text": "Year length and distance details."}, {"title": "Quick Clue", "text": "Kuiper Belt dwarf planet."}, {"title": "Remember", "text": "Discovered in 2005."}, {"title": "Extra", "text": "Remember this point."}], "id-surface": [{"title": "Core Idea", "text": "What the surface looks like."}, {"title": "Key Detail", "text": "Craters, plains, mountains, and marks."}, {"title": "Quick Clue", "text": "Kuiper Belt dwarf planet."}, {"title": "Remember", "text": "Discovered in 2005."}, {"title": "Extra", "text": "Remember this point."}], "id-moons": [{"title": "Core Idea", "text": "Major moons and their traits."}, {"title": "Key Detail", "text": "Some are icy, some are volcanic."}, {"title": "Quick Clue", "text": "Kuiper Belt dwarf planet."}, {"title": "Remember", "text": "Discovered in 2005."}, {"title": "Extra", "text": "Remember this point."}], "id-discovery": [{"title": "Core Idea", "text": "When it was found."}, {"title": "Key Detail", "text": "How discovery changed science."}, {"title": "Quick Clue", "text": "Kuiper Belt dwarf planet."}, {"title": "Remember", "text": "Discovered in 2005."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Kuiper Belt dwarf planet."}, {"title": "Remember", "text": "Discovered in 2005."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "Makemake is a dwarf planet in the Kuiper Belt."}, {"title": "Bright Ice", "text": "Its surface is bright, covered with icy materials."}, {"title": "Reddish Tint", "text": "Sunlight changes methane ice into red organic compounds."}, {"title": "Cold World", "text": "It is extremely cold because it is far from the Sun."}, {"title": "Long Year", "text": "It takes just over 300 Earth years to orbit the Sun."}], "id-orbit": [{"title": "Distant Path", "text": "Makemake orbits far beyond Neptune."}, {"title": "Oval Orbit", "text": "Its orbit is elliptical, so distance from the Sun changes."}, {"title": "Slow Trip", "text": "One trip around the Sun takes about 306 years."}, {"title": "Tilted", "text": "Its orbital tilt adds to long, slow seasons."}, {"title": "Kuiper Neighbor", "text": "It shares space with many other icy objects."}], "id-surface": [{"title": "Methane Ice", "text": "Frozen methane sits on the surface."}, {"title": "Nitrogen Patches", "text": "There may be some nitrogen and ethane ice too."}, {"title": "Reddish Areas", "text": "Sunlight makes reddish material called tholins."}, {"title": "No Big Atmosphere", "text": "Any atmosphere would be very thin or frozen."}, {"title": "Unknown Terrain", "text": "We do not have close-up images yet."}], "id-moons": [{"title": "Small Moon", "text": "A tiny moon was discovered in 2015."}, {"title": "Dark Companion", "text": "The moon is much darker than Makemake."}, {"title": "Odd Orbit", "text": "Its orbit helps scientists estimate Makemake’s mass."}, {"title": "Few Moons", "text": "Makemake has far fewer moons than Pluto."}, {"title": "Hidden Details", "text": "Most moon details are still unknown."}], "id-discovery": [{"title": "Found in 2005", "text": "Makemake was discovered in 2005."}, {"title": "Name Origin", "text": "It is named after a creator god from Rapa Nui culture."}, {"title": "Dwarf Planet", "text": "It became one of the recognized dwarf planets."}, {"title": "Bright Object", "text": "It is one of the brightest Kuiper Belt objects."}, {"title": "Still Mysterious", "text": "Many details remain unknown without a spacecraft visit."}], "id-quiz": [{"title": "Core Idea", "text": "Use Makemake’s real details."}, {"title": "Key Detail", "text": "Remember 2005, Kuiper Belt, and icy surface."}, {"title": "Quick Clue", "text": "A bright, cold dwarf planet."}, {"title": "Remember", "text": "It has one tiny known moon."}, {"title": "Extra", "text": "Precise facts matter more than guesses."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'dwarf', q2: ["far", "icy"], q3: 'moon', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'dwarf', q2: ["far", "icy"], q3: '2005', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -24,7 +24,7 @@
 		<div class="title">
 			<p class="tag">Remote Dwarf</p>
 			<h1>Makemake</h1>
-			<p class="subtitle">Kuiper Belt dwarf planet.</p>
+			<p class="subtitle">Bright, cold dwarf planet in the Kuiper Belt.</p>
 		</div>
 		<nav class="jump">
 					<button
@@ -89,28 +89,28 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Makemake is a dwarf planet in the Kuiper Belt.</p>
+			<p>It is bright, icy, and extremely cold.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbit'} id="id-orbit">
 			<h2>Orbit</h2>
-			<p>How it travels around the Sun.</p>
-			<p>Year length and distance details.</p>
+			<p>It orbits far beyond Neptune on a long, oval path.</p>
+			<p>A Makemake year lasts a little over 300 Earth years.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-surface'} id="id-surface">
 			<h2>Surface</h2>
-			<p>What the surface looks like.</p>
-			<p>Craters, plains, mountains, and marks.</p>
+			<p>Methane and other ices cover the surface.</p>
+			<p>Sunlight turns some ice into reddish organic material.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-moons'} id="id-moons">
 			<h2>Moons</h2>
-			<p>Major moons and their traits.</p>
-			<p>Some are icy, some are volcanic.</p>
+			<p>Makemake has one tiny known moon discovered in 2015.</p>
+			<p>Its moon is darker and helps measure Makemake’s mass.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-discovery'} id="id-discovery">
 			<h2>Discovery</h2>
-			<p>When it was found.</p>
-			<p>How discovery changed science.</p>
+			<p>It was discovered in 2005 and named after a creator god.</p>
+			<p>It became one of the recognized dwarf planets.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
@@ -120,13 +120,13 @@
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
+					<p>2. Multi-select: Which traits belong to Makemake?</p>
 					<label><input type="checkbox" value="far" bind:group={quizAnswers.q2} /> Far from the Sun</label>
 					<label><input type="checkbox" value="icy" bind:group={quizAnswers.q2} /> Icy surface</label>
 					<label><input type="checkbox" value="hot" bind:group={quizAnswers.q2} /> Very hot</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name one moon or fact.</p>
+					<p>3. Short answer: In what year was Makemake discovered?</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">

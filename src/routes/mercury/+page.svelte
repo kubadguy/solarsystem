@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-surface", "id-atmosphere", "id-orbit", "id-missions", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-surface": [{"title": "Core Idea", "text": "What the surface looks like."}, {"title": "Key Detail", "text": "Craters, plains, mountains, and marks."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-atmosphere": [{"title": "Core Idea", "text": "Air, clouds, and pressure."}, {"title": "Key Detail", "text": "How the atmosphere changes heat and weather."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-orbit": [{"title": "Core Idea", "text": "How it travels around the Sun."}, {"title": "Key Detail", "text": "Year length and distance details."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-missions": [{"title": "Core Idea", "text": "Spacecraft discoveries."}, {"title": "Key Detail", "text": "What missions revealed about this world."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Smallest planet and closest to the Sun."}, {"title": "Remember", "text": "Year: 88 days."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Smallest Planet", "text": "Mercury is the smallest planet in the solar system."}, {"title": "Closest to Sun", "text": "It orbits nearest to the Sun."}, {"title": "Rocky World", "text": "Mercury has a solid, rocky surface."}, {"title": "No Moons", "text": "It has no moons or rings."}, {"title": "Short Year", "text": "One year is just 88 Earth days."}], "id-surface": [{"title": "Craters", "text": "The surface is covered with impact craters."}, {"title": "Caloris Basin", "text": "A huge impact made the Caloris Basin."}, {"title": "Cliffs", "text": "Tall cliffs formed as Mercury cooled and shrank."}, {"title": "Old Land", "text": "Much of the surface is very old."}, {"title": "Dusty", "text": "Fine rocky dust covers many areas."}], "id-atmosphere": [{"title": "Thin Exosphere", "text": "Mercury has a very thin exosphere, not real air."}, {"title": "No Weather", "text": "There is almost no weather or clouds."}, {"title": "Elements", "text": "Atoms like sodium and oxygen float around it."}, {"title": "Hot and Cold", "text": "Thin air means huge temperature swings."}, {"title": "Little Protection", "text": "Sunlight hits the surface directly."}], "id-orbit": [{"title": "Fast Orbit", "text": "It completes an orbit in 88 days."}, {"title": "Long Day", "text": "One Mercury day is about 59 Earth days."}, {"title": "3:2 Spin", "text": "It spins three times for every two orbits."}, {"title": "Oval Path", "text": "Its orbit is more oval than most planets."}, {"title": "Weird Sun", "text": "The Sun can seem to pause in the sky."}], "id-missions": [{"title": "Mariner 10", "text": "First spacecraft to visit Mercury."}, {"title": "MESSENGER", "text": "Orbited Mercury and mapped its surface."}, {"title": "BepiColombo", "text": "Current mission studying Mercury."}, {"title": "Ice Clues", "text": "Missions found evidence of ice in polar craters."}, {"title": "Magnetic Field", "text": "Mercury has a weak magnetic field."}], "id-quiz": [{"title": "Quick Recall", "text": "Use the facts from each section."}, {"title": "Be Precise", "text": "Short answers should be clear."}, {"title": "Think First", "text": "Try to answer before guessing."}, {"title": "Challenge", "text": "Some answers need details."}, {"title": "You Got This", "text": "Check your score at the end."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'rocky', q2: ["close", "solid"], q3: 'craters', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'sun', q2: ["no moons", "88 days"], q3: 'messenger', q4: 'a', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,54 +89,54 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Mercury is the smallest planet and the closest to the Sun.</p>
+			<p>It is a rocky world with no moons and a very short year.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-surface'} id="id-surface">
 			<h2>Surface</h2>
-			<p>What the surface looks like.</p>
-			<p>Craters, plains, mountains, and marks.</p>
+			<p>Mercury looks like a giant, cratered rock.</p>
+			<p>Big impacts and tall cliffs show a long, active history.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-atmosphere'} id="id-atmosphere">
 			<h2>Atmosphere</h2>
-			<p>Air, clouds, and pressure.</p>
-			<p>How the atmosphere changes heat and weather.</p>
+			<p>Mercury has only a thin exosphere, not breathable air.</p>
+			<p>Because of this, temperatures swing from very hot to very cold.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbit'} id="id-orbit">
 			<h2>Orbit</h2>
-			<p>How it travels around the Sun.</p>
-			<p>Year length and distance details.</p>
+			<p>Mercury orbits the Sun in just 88 days.</p>
+			<p>Its day is long, and its oval orbit changes sunlight a lot.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-missions'} id="id-missions">
 			<h2>Missions</h2>
-			<p>Spacecraft discoveries.</p>
-			<p>What missions revealed about this world.</p>
+			<p>Mariner 10 and MESSENGER mapped Mercury in detail.</p>
+			<p>BepiColombo is now exploring its surface and magnetic field.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. This world is a ______ planet.</p>
+					<p>1. Mercury is closest to the ______.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="close" bind:group={quizAnswers.q2} /> Close to the Sun</label>
-					<label><input type="checkbox" value="solid" bind:group={quizAnswers.q2} /> Solid surface</label>
-					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
+					<p>2. Multi-select: Which two are true about Mercury?</p>
+					<label><input type="checkbox" value="no moons" bind:group={quizAnswers.q2} /> It has no moons</label>
+					<label><input type="checkbox" value="88 days" bind:group={quizAnswers.q2} /> Its year is 88 days</label>
+					<label><input type="checkbox" value="thick air" bind:group={quizAnswers.q2} /> It has thick air</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name one surface feature.</p>
+					<p>3. Short answer: Name one Mercury mission.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
 					<p>4. Which statement is most accurate?</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has no surface</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It has a solid surface</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a star</label>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has extreme temperature swings</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It has thick clouds</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It has a ring system</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: It orbits the Sun.</p>
+					<p>5. True or False: Mercury’s surface is heavily cratered.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>

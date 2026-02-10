@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-atmosphere", "id-storms", "id-moons", "id-rings", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-atmosphere": [{"title": "Core Idea", "text": "Air, clouds, and pressure."}, {"title": "Key Detail", "text": "How the atmosphere changes heat and weather."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-storms": [{"title": "Core Idea", "text": "Big storms and fast winds."}, {"title": "Key Detail", "text": "Weather that can last for years."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-moons": [{"title": "Core Idea", "text": "Major moons and their traits."}, {"title": "Key Detail", "text": "Some are icy, some are volcanic."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-rings": [{"title": "Core Idea", "text": "Rings are icy and thin."}, {"title": "Key Detail", "text": "Gaps and divisions shape the system."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Largest planet with storms and stripes."}, {"title": "Remember", "text": "Great Red Spot storm."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "Jupiter is the largest planet and the fifth from the Sun."}, {"title": "Size Clue", "text": "You could fit more than 1,300 Earths inside it."}, {"title": "Fast Day", "text": "One day is about 10 hours, so it spins very fast."}, {"title": "Striped Look", "text": "Light and dark bands are winds moving in opposite directions."}, {"title": "Gravity Boss", "text": "Its gravity helps steer comets and asteroids."}], "id-atmosphere": [{"title": "Main Gases", "text": "Mostly hydrogen and helium, like the Sun but cooler."}, {"title": "Cloud Layers", "text": "Ammonia clouds on top, with deeper layers below."}, {"title": "Pressure", "text": "Pressure rises quickly as you go deeper into the gas."}, {"title": "Wind Belts", "text": "Jet streams race around the planet in fast belts."}, {"title": "Color Clues", "text": "Colors come from chemistry and sunlight changing the clouds."}], "id-storms": [{"title": "Great Red Spot", "text": "A huge storm larger than Earth that has raged for centuries."}, {"title": "Lightning", "text": "Jupiter has powerful lightning inside its thick clouds."}, {"title": "Oval Storms", "text": "Smaller storms appear and merge like spinning gears."}, {"title": "Heat Engine", "text": "It gives off more heat than it gets from the Sun."}, {"title": "Speed", "text": "Wind speeds can reach hundreds of kilometers per hour."}], "id-moons": [{"title": "Big Four", "text": "Io, Europa, Ganymede, and Callisto are the Galilean moons."}, {"title": "Io", "text": "Io is the most volcanic world in the solar system."}, {"title": "Europa", "text": "Europa has a cracked icy shell and a hidden ocean."}, {"title": "Ganymede", "text": "Ganymede is the largest moon of any planet."}, {"title": "Many More", "text": "Jupiter has dozens of other moons in different orbits."}], "id-rings": [{"title": "Faint Rings", "text": "Jupiter does have rings, but they are thin and dusty."}, {"title": "Made of Dust", "text": "The rings are made from tiny particles, not big ice chunks."}, {"title": "Moon Link", "text": "Dust comes from small moons hit by micrometeoroids."}, {"title": "Hard to See", "text": "You need special images to spot the ring system."}, {"title": "Different from Saturn", "text": "Saturn's rings are bright; Jupiter's are subtle."}], "id-quiz": [{"title": "Core Idea", "text": "Answer with real details, not guesses."}, {"title": "Key Detail", "text": "Use names like Great Red Spot or Galilean moons."}, {"title": "Quick Clue", "text": "Think about gas, storms, and fast rotation."}, {"title": "Remember", "text": "Jupiter has faint rings and many moons."}, {"title": "Extra", "text": "Be precise: one good word can earn the point."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'gas', q2: ["storms", "rings"], q3: 'moons', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'gas', q2: ["storms", "rings"], q3: 'red spot', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -24,7 +24,7 @@
 		<div class="title">
 			<p class="tag">Giant Guardian</p>
 			<h1>Jupiter</h1>
-			<p class="subtitle">Largest planet with storms and stripes.</p>
+			<p class="subtitle">A stormy gas giant with fast winds and a famous red storm.</p>
 		</div>
 		<nav class="jump">
 					<button
@@ -89,28 +89,28 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Jupiter is the fifth planet from the Sun and the largest by far.</p>
+			<p>Its quick 10-hour day and colorful bands come from rapid rotation.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-atmosphere'} id="id-atmosphere">
 			<h2>Atmosphere</h2>
-			<p>Air, clouds, and pressure.</p>
-			<p>How the atmosphere changes heat and weather.</p>
+			<p>The air is mostly hydrogen and helium with layered clouds.</p>
+			<p>Ammonia clouds sit on top, with pressure rising fast below.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-storms'} id="id-storms">
 			<h2>Storms</h2>
-			<p>Big storms and fast winds.</p>
-			<p>Weather that can last for years.</p>
+			<p>The Great Red Spot is a giant storm larger than Earth.</p>
+			<p>Jupiter also shows lightning and fast jet-stream winds.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-moons'} id="id-moons">
 			<h2>Moons</h2>
-			<p>Major moons and their traits.</p>
-			<p>Some are icy, some are volcanic.</p>
+			<p>The Galilean moons include Io, Europa, Ganymede, and Callisto.</p>
+			<p>Io is volcanic, while Europa hides an icy ocean.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-rings'} id="id-rings">
 			<h2>Rings</h2>
-			<p>Rings are icy and thin.</p>
-			<p>Gaps and divisions shape the system.</p>
+			<p>Jupiter’s rings are faint and made of dust from tiny moons.</p>
+			<p>They are much dimmer than Saturn’s bright ice rings.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
@@ -120,13 +120,13 @@
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
+					<p>2. Multi-select: Which traits belong to Jupiter?</p>
 					<label><input type="checkbox" value="storms" bind:group={quizAnswers.q2} /> Has storms</label>
 					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
 					<label><input type="checkbox" value="rocky" bind:group={quizAnswers.q2} /> Mostly rock</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name a feature of this planet.</p>
+					<p>3. Short answer: Name a famous storm on Jupiter.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
@@ -136,7 +136,7 @@
 					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a comet</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: It has many moons.</p>
+					<p>5. True or False: Jupiter has many moons.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>

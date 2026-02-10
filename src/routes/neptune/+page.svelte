@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-color", "id-storms", "id-moons", "id-rings", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Deep blue planet with the fastest winds."}, {"title": "Remember", "text": "Very fast storms."}, {"title": "Extra", "text": "Remember this point."}], "id-color": [{"title": "Core Idea", "text": "Why it looks blue or green."}, {"title": "Key Detail", "text": "Gases and hazes change its color."}, {"title": "Quick Clue", "text": "Deep blue planet with the fastest winds."}, {"title": "Remember", "text": "Very fast storms."}, {"title": "Extra", "text": "Remember this point."}], "id-storms": [{"title": "Core Idea", "text": "Big storms and fast winds."}, {"title": "Key Detail", "text": "Weather that can last for years."}, {"title": "Quick Clue", "text": "Deep blue planet with the fastest winds."}, {"title": "Remember", "text": "Very fast storms."}, {"title": "Extra", "text": "Remember this point."}], "id-moons": [{"title": "Core Idea", "text": "Major moons and their traits."}, {"title": "Key Detail", "text": "Some are icy, some are volcanic."}, {"title": "Quick Clue", "text": "Deep blue planet with the fastest winds."}, {"title": "Remember", "text": "Very fast storms."}, {"title": "Extra", "text": "Remember this point."}], "id-rings": [{"title": "Core Idea", "text": "Rings are icy and thin."}, {"title": "Key Detail", "text": "Gaps and divisions shape the system."}, {"title": "Quick Clue", "text": "Deep blue planet with the fastest winds."}, {"title": "Remember", "text": "Very fast storms."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Deep blue planet with the fastest winds."}, {"title": "Remember", "text": "Very fast storms."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "Neptune is the eighth planet and an ice giant."}, {"title": "Far Edge", "text": "It orbits far beyond Uranus at the edge of the system."}, {"title": "Long Year", "text": "One Neptune year is about 165 Earth years."}, {"title": "Fast Day", "text": "A day lasts about 16 hours."}, {"title": "Powerful Gravity", "text": "Its gravity shapes nearby small objects and moons."}], "id-color": [{"title": "Blue World", "text": "Methane absorbs red light, giving Neptune a deep blue color."}, {"title": "Haze Layers", "text": "High-altitude hazes brighten its upper atmosphere."}, {"title": "Clouds", "text": "Bright methane-ice clouds form in the cold air."}, {"title": "Icy Interior", "text": "Inside are water, ammonia, and methane ices."}, {"title": "Coldest Giants", "text": "Sunlight is weak, so the planet is extremely cold."}], "id-storms": [{"title": "Fastest Winds", "text": "Neptune has the fastest winds in the solar system."}, {"title": "Dark Spots", "text": "Great Dark Spot storms appear and disappear over time."}, {"title": "Energy Source", "text": "It gives off internal heat that powers weather."}, {"title": "Vertical Storms", "text": "Storms rise high and create bright white clouds."}, {"title": "Seasonal", "text": "Storm activity changes over its long seasons."}], "id-moons": [{"title": "Triton", "text": "Triton is the largest moon and orbits backward."}, {"title": "Captured", "text": "Its backward orbit suggests it was captured."}, {"title": "Cold Surface", "text": "Triton has icy plains and possible geysers."}, {"title": "Other Moons", "text": "Neptune has many smaller moons in odd orbits."}, {"title": "Moon-Ring Link", "text": "Some moons shape the faint rings."}], "id-rings": [{"title": "Faint Rings", "text": "Neptune’s rings are thin, dark, and hard to see."}, {"title": "Ring Arcs", "text": "Some rings form bright arcs instead of full circles."}, {"title": "Dusty Material", "text": "The rings are mostly dust and small particles."}, {"title": "Shepherd Moons", "text": "Small moons help hold ring arcs together."}, {"title": "Subtle System", "text": "They are far dimmer than Saturn’s rings."}], "id-quiz": [{"title": "Core Idea", "text": "Use Neptune’s real details."}, {"title": "Key Detail", "text": "Remember Triton, dark storms, and fast winds."}, {"title": "Quick Clue", "text": "Think of a deep blue ice giant."}, {"title": "Remember", "text": "Neptune has ring arcs, not bright wide rings."}, {"title": "Extra", "text": "Precise words earn the point."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'ice', q2: ["blue", "winds"], q3: 'rings', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'ice', q2: ["blue", "winds"], q3: 'triton', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -24,7 +24,7 @@
 		<div class="title">
 			<p class="tag">Wind King</p>
 			<h1>Neptune</h1>
-			<p class="subtitle">Deep blue planet with the fastest winds.</p>
+			<p class="subtitle">Deep blue ice giant with the fastest winds.</p>
 		</div>
 		<nav class="jump">
 					<button
@@ -89,28 +89,28 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Neptune is the eighth planet and a distant ice giant.</p>
+			<p>Its year lasts about 165 Earth years.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-color'} id="id-color">
 			<h2>Color</h2>
-			<p>Why it looks blue or green.</p>
-			<p>Gases and hazes change its color.</p>
+			<p>Methane absorbs red light, creating a deep blue tone.</p>
+			<p>High hazes and bright clouds add contrast.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-storms'} id="id-storms">
 			<h2>Storms</h2>
-			<p>Big storms and fast winds.</p>
-			<p>Weather that can last for years.</p>
+			<p>Neptune’s winds are the fastest in the solar system.</p>
+			<p>Dark spots form, fade, and move with the storms.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-moons'} id="id-moons">
 			<h2>Moons</h2>
-			<p>Major moons and their traits.</p>
-			<p>Some are icy, some are volcanic.</p>
+			<p>Triton is the largest moon and orbits backward.</p>
+			<p>Its icy surface may show geysers and frozen plains.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-rings'} id="id-rings">
 			<h2>Rings</h2>
-			<p>Rings are icy and thin.</p>
-			<p>Gaps and divisions shape the system.</p>
+			<p>Neptune’s rings are thin, dark, and dusty.</p>
+			<p>Some parts form bright arcs instead of full rings.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
@@ -120,13 +120,13 @@
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
+					<p>2. Multi-select: Which traits belong to Neptune?</p>
 					<label><input type="checkbox" value="blue" bind:group={quizAnswers.q2} /> Looks blue</label>
 					<label><input type="checkbox" value="winds" bind:group={quizAnswers.q2} /> Fast winds</label>
 					<label><input type="checkbox" value="hot" bind:group={quizAnswers.q2} /> Very hot</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name a feature of this planet.</p>
+					<p>3. Short answer: Name Neptune’s largest moon.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">

@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-orbit", "id-surface", "id-moons", "id-discovery", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Small icy world far beyond Neptune."}, {"title": "Remember", "text": "Large moon: Charon."}, {"title": "Extra", "text": "Remember this point."}], "id-orbit": [{"title": "Core Idea", "text": "How it travels around the Sun."}, {"title": "Key Detail", "text": "Year length and distance details."}, {"title": "Quick Clue", "text": "Small icy world far beyond Neptune."}, {"title": "Remember", "text": "Large moon: Charon."}, {"title": "Extra", "text": "Remember this point."}], "id-surface": [{"title": "Core Idea", "text": "What the surface looks like."}, {"title": "Key Detail", "text": "Craters, plains, mountains, and marks."}, {"title": "Quick Clue", "text": "Small icy world far beyond Neptune."}, {"title": "Remember", "text": "Large moon: Charon."}, {"title": "Extra", "text": "Remember this point."}], "id-moons": [{"title": "Core Idea", "text": "Major moons and their traits."}, {"title": "Key Detail", "text": "Some are icy, some are volcanic."}, {"title": "Quick Clue", "text": "Small icy world far beyond Neptune."}, {"title": "Remember", "text": "Large moon: Charon."}, {"title": "Extra", "text": "Remember this point."}], "id-discovery": [{"title": "Core Idea", "text": "When it was found."}, {"title": "Key Detail", "text": "How discovery changed science."}, {"title": "Quick Clue", "text": "Small icy world far beyond Neptune."}, {"title": "Remember", "text": "Large moon: Charon."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Small icy world far beyond Neptune."}, {"title": "Remember", "text": "Large moon: Charon."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "Pluto is a dwarf planet in the Kuiper Belt."}, {"title": "Small World", "text": "It is smaller than Earth’s Moon."}, {"title": "Icy Mix", "text": "Its surface is made of nitrogen, methane, and carbon monoxide ice."}, {"title": "Thin Air", "text": "A thin atmosphere appears when it is closer to the Sun."}, {"title": "Famous Heart", "text": "A bright heart-shaped region is called Tombaugh Regio."}], "id-orbit": [{"title": "Long Year", "text": "Pluto takes about 248 Earth years to orbit the Sun."}, {"title": "Oval Path", "text": "Its orbit is very elliptical, so distance changes a lot."}, {"title": "Crossing Neptune", "text": "Sometimes Pluto is closer to the Sun than Neptune."}, {"title": "Tilted Orbit", "text": "Its orbit is tilted compared to the planets."}, {"title": "Kuiper Belt", "text": "It travels within a region full of icy worlds."}], "id-surface": [{"title": "Ice Plains", "text": "Smooth plains of nitrogen ice cover parts of Pluto."}, {"title": "Mountains", "text": "Mountains of water ice rise like rock."}, {"title": "Craters", "text": "Older areas show many impact craters."}, {"title": "Color Patches", "text": "Dark red areas come from complex surface chemistry."}, {"title": "Active World", "text": "Some features look geologically young."}], "id-moons": [{"title": "Charon", "text": "Charon is so big it orbits with Pluto as a pair."}, {"title": "Shared Center", "text": "Their center of mass sits outside Pluto itself."}, {"title": "Small Moons", "text": "Nix, Hydra, Kerberos, and Styx are smaller moons."}, {"title": "Icy Companions", "text": "The moons are cold and icy like Pluto."}, {"title": "Tidal Lock", "text": "Pluto and Charon always show the same face to each other."}], "id-discovery": [{"title": "Found in 1930", "text": "Clyde Tombaugh discovered Pluto in 1930."}, {"title": "Name Choice", "text": "A schoolgirl suggested the name Pluto."}, {"title": "Reclassified", "text": "In 2006 it was reclassified as a dwarf planet."}, {"title": "New Horizons", "text": "NASA’s New Horizons flew by in 2015."}, {"title": "Big Surprise", "text": "The flyby showed a complex, active world."}], "id-quiz": [{"title": "Core Idea", "text": "Use Pluto’s real details."}, {"title": "Key Detail", "text": "Think about its orbit, ice, and large moon."}, {"title": "Quick Clue", "text": "Dwarf planet in the Kuiper Belt."}, {"title": "Remember", "text": "Charon is unusually large compared to Pluto."}, {"title": "Extra", "text": "Precise names earn the point."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'dwarf', q2: ["far", "icy"], q3: 'moon', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'dwarf', q2: ["far", "icy"], q3: 'charon', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -24,7 +24,7 @@
 		<div class="title">
 			<p class="tag">Distant Dwarf</p>
 			<h1>Pluto</h1>
-			<p class="subtitle">Small icy world far beyond Neptune.</p>
+			<p class="subtitle">Dwarf planet in the Kuiper Belt with a giant moon.</p>
 		</div>
 		<nav class="jump">
 					<button
@@ -89,28 +89,28 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Pluto is a dwarf planet in the Kuiper Belt beyond Neptune.</p>
+			<p>Its surface is icy and much smaller than Earth’s Moon.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbit'} id="id-orbit">
 			<h2>Orbit</h2>
-			<p>How it travels around the Sun.</p>
-			<p>Year length and distance details.</p>
+			<p>Pluto’s orbit is oval and tilted compared to the planets.</p>
+			<p>It takes about 248 Earth years to go around the Sun.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-surface'} id="id-surface">
 			<h2>Surface</h2>
-			<p>What the surface looks like.</p>
-			<p>Craters, plains, mountains, and marks.</p>
+			<p>Pluto has smooth nitrogen-ice plains and tall icy mountains.</p>
+			<p>A heart-shaped bright region is called Tombaugh Regio.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-moons'} id="id-moons">
 			<h2>Moons</h2>
-			<p>Major moons and their traits.</p>
-			<p>Some are icy, some are volcanic.</p>
+			<p>Charon is so large that Pluto and Charon orbit as a pair.</p>
+			<p>Smaller moons include Nix, Hydra, Kerberos, and Styx.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-discovery'} id="id-discovery">
 			<h2>Discovery</h2>
-			<p>When it was found.</p>
-			<p>How discovery changed science.</p>
+			<p>Pluto was discovered in 1930 by Clyde Tombaugh.</p>
+			<p>New Horizons revealed a complex world in 2015.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
@@ -120,13 +120,13 @@
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
+					<p>2. Multi-select: Which traits belong to Pluto?</p>
 					<label><input type="checkbox" value="far" bind:group={quizAnswers.q2} /> Far from the Sun</label>
 					<label><input type="checkbox" value="icy" bind:group={quizAnswers.q2} /> Icy surface</label>
 					<label><input type="checkbox" value="hot" bind:group={quizAnswers.q2} /> Very hot</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name one moon or fact.</p>
+					<p>3. Short answer: Name Pluto’s largest moon.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">

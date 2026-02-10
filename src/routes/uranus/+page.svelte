@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-color", "id-storms", "id-moons", "id-rings", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Icy giant tilted on its side."}, {"title": "Remember", "text": "Tilted about 98 degrees."}, {"title": "Extra", "text": "Remember this point."}], "id-color": [{"title": "Core Idea", "text": "Why it looks blue or green."}, {"title": "Key Detail", "text": "Gases and hazes change its color."}, {"title": "Quick Clue", "text": "Icy giant tilted on its side."}, {"title": "Remember", "text": "Tilted about 98 degrees."}, {"title": "Extra", "text": "Remember this point."}], "id-storms": [{"title": "Core Idea", "text": "Big storms and fast winds."}, {"title": "Key Detail", "text": "Weather that can last for years."}, {"title": "Quick Clue", "text": "Icy giant tilted on its side."}, {"title": "Remember", "text": "Tilted about 98 degrees."}, {"title": "Extra", "text": "Remember this point."}], "id-moons": [{"title": "Core Idea", "text": "Major moons and their traits."}, {"title": "Key Detail", "text": "Some are icy, some are volcanic."}, {"title": "Quick Clue", "text": "Icy giant tilted on its side."}, {"title": "Remember", "text": "Tilted about 98 degrees."}, {"title": "Extra", "text": "Remember this point."}], "id-rings": [{"title": "Core Idea", "text": "Rings are icy and thin."}, {"title": "Key Detail", "text": "Gaps and divisions shape the system."}, {"title": "Quick Clue", "text": "Icy giant tilted on its side."}, {"title": "Remember", "text": "Tilted about 98 degrees."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Icy giant tilted on its side."}, {"title": "Remember", "text": "Tilted about 98 degrees."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "Uranus is the seventh planet and an ice giant."}, {"title": "Sideways Spin", "text": "Its axis is tilted about 98 degrees, like it rolled over."}, {"title": "Long Seasons", "text": "Each season lasts more than 20 Earth years."}, {"title": "Fast Day", "text": "A day on Uranus is about 17 hours long."}, {"title": "Quiet Giant", "text": "It looks calm, but winds can be very fast."}], "id-color": [{"title": "Methane Tint", "text": "Methane gas absorbs red light, making Uranus blue-green."}, {"title": "Haze Layers", "text": "Thin hazes soften the colors and blur cloud details."}, {"title": "Sunlight Angle", "text": "Because of the tilt, sunlight hits in unusual ways."}, {"title": "Faint Bands", "text": "Subtle bands and clouds appear in infrared images."}, {"title": "Ice Giant", "text": "Its deep interior contains water, ammonia, and methane ices."}], "id-storms": [{"title": "Fast Winds", "text": "Winds can reach hundreds of kilometers per hour."}, {"title": "Dark Spots", "text": "Occasional dark storms appear and fade."}, {"title": "Cold Air", "text": "Uranus is one of the coldest worlds in the system."}, {"title": "Energy Mystery", "text": "It gives off little extra heat compared to other giants."}, {"title": "Seasonal Weather", "text": "Weather changes as its long seasons move on."}], "id-moons": [{"title": "Largest Moons", "text": "Titania and Oberon are the biggest moons."}, {"title": "Miranda", "text": "Miranda has cliffs and patchwork terrain."}, {"title": "Shakespeare Names", "text": "Many moons are named after Shakespeare characters."}, {"title": "Icy Worlds", "text": "Most moons are cold and icy with old craters."}, {"title": "Shepherding", "text": "Some moons help keep the rings in shape."}], "id-rings": [{"title": "Dark Rings", "text": "Uranus has faint, dark rings made of dust and rock."}, {"title": "Narrow Bands", "text": "The rings are thin and narrow compared to Saturn’s."}, {"title": "Discovered Late", "text": "They were found in 1977 during a star occultation."}, {"title": "Shepherd Moons", "text": "Small moons help keep ring edges tidy."}, {"title": "Hard to See", "text": "The rings are almost invisible in normal light."}], "id-quiz": [{"title": "Core Idea", "text": "Use Uranus facts, not guesses."}, {"title": "Key Detail", "text": "Tilt, methane color, and icy composition matter."}, {"title": "Quick Clue", "text": "Think of a sideways ice giant."}, {"title": "Remember", "text": "Rings are dark and hard to see."}, {"title": "Extra", "text": "One strong keyword can earn the point."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'ice', q2: ["blue", "winds"], q3: 'rings', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'ice', q2: ["blue", "winds"], q3: 'methane', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -24,7 +24,7 @@
 		<div class="title">
 			<p class="tag">Side Spinner</p>
 			<h1>Uranus</h1>
-			<p class="subtitle">Icy giant tilted on its side.</p>
+			<p class="subtitle">The sideways ice giant with a blue-green glow.</p>
 		</div>
 		<nav class="jump">
 					<button
@@ -89,28 +89,28 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Uranus is the seventh planet and an ice giant far from the Sun.</p>
+			<p>Its extreme tilt makes it spin on its side.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-color'} id="id-color">
 			<h2>Color</h2>
-			<p>Why it looks blue or green.</p>
-			<p>Gases and hazes change its color.</p>
+			<p>Methane absorbs red light, so the planet looks blue-green.</p>
+			<p>Thin hazes soften its colors and hide faint bands.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-storms'} id="id-storms">
 			<h2>Storms</h2>
-			<p>Big storms and fast winds.</p>
-			<p>Weather that can last for years.</p>
+			<p>Fast winds and occasional dark storms appear in the clouds.</p>
+			<p>Uranus gives off little extra heat, so its weather is subtle.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-moons'} id="id-moons">
 			<h2>Moons</h2>
-			<p>Major moons and their traits.</p>
-			<p>Some are icy, some are volcanic.</p>
+			<p>Titania and Oberon are the largest, while Miranda is patchy.</p>
+			<p>Many moons are named from Shakespeare stories.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-rings'} id="id-rings">
 			<h2>Rings</h2>
-			<p>Rings are icy and thin.</p>
-			<p>Gaps and divisions shape the system.</p>
+			<p>Uranus has narrow, dark rings made of dusty rock.</p>
+			<p>They are faint and hard to see in normal light.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
@@ -120,13 +120,13 @@
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
+					<p>2. Multi-select: Which traits belong to Uranus?</p>
 					<label><input type="checkbox" value="blue" bind:group={quizAnswers.q2} /> Looks blue</label>
 					<label><input type="checkbox" value="winds" bind:group={quizAnswers.q2} /> Fast winds</label>
 					<label><input type="checkbox" value="hot" bind:group={quizAnswers.q2} /> Very hot</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name a feature of this planet.</p>
+					<p>3. Short answer: Name the gas that gives Uranus its color.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">

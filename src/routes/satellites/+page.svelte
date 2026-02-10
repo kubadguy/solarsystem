@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-members", "id-features", "id-distance", "id-compare", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-members": [{"title": "Core Idea", "text": "Group members."}, {"title": "Key Detail", "text": "Order and key traits."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-features": [{"title": "Core Idea", "text": "Shared features."}, {"title": "Key Detail", "text": "Rings, storms, and size."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-distance": [{"title": "Core Idea", "text": "Distance from the Sun."}, {"title": "Key Detail", "text": "Longer years and colder temps."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-compare": [{"title": "Core Idea", "text": "Compare size and atmosphere."}, {"title": "Key Detail", "text": "What makes each unique."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Natural satellites around planets."}, {"title": "Remember", "text": "Some may hide oceans."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "Satellites are natural moons that orbit planets."}, {"title": "Gravity Bond", "text": "They are held by a planet’s gravity, not their own."}, {"title": "Many Sizes", "text": "Some are tiny rocks, others are bigger than planets."}, {"title": "No Light", "text": "Moons shine by reflecting sunlight, not making it."}, {"title": "Hidden Oceans", "text": "Some icy moons may hide oceans under the surface."}], "id-members": [{"title": "Earth’s Moon", "text": "Our Moon causes tides and shows the same face."}, {"title": "Mars Moons", "text": "Phobos and Deimos are small and lumpy."}, {"title": "Jupiter’s Giants", "text": "Io, Europa, Ganymede, and Callisto are huge moons."}, {"title": "Saturn’s Stars", "text": "Titan has a thick atmosphere; Enceladus has ice geysers."}, {"title": "Ice Giants", "text": "Uranus and Neptune also have many icy moons."}], "id-features": [{"title": "Tidal Lock", "text": "Many moons always show the same face to their planet."}, {"title": "Craters", "text": "Old surfaces are covered with impact craters."}, {"title": "Volcanoes", "text": "Io is the most volcanic world in the solar system."}, {"title": "Ice and Water", "text": "Europa and Enceladus may hide liquid water."}, {"title": "Thin Air", "text": "Most moons have little or no atmosphere."}], "id-distance": [{"title": "Near vs Far", "text": "Close moons feel stronger tides and pull."}, {"title": "Orbital Speeds", "text": "Inner moons orbit faster than outer ones."}, {"title": "Ring Shepherds", "text": "Some small moons guide and shape planetary rings."}, {"title": "Eclipse Maker", "text": "Moons can cause eclipses as they pass in front of a planet."}, {"title": "Stable Paths", "text": "Moons follow set paths that can last billions of years."}], "id-compare": [{"title": "Size Range", "text": "Moons range from tiny rocks to Ganymede, bigger than Mercury."}, {"title": "Surface Types", "text": "Some are rocky, some are icy, some are mixed."}, {"title": "Atmospheres", "text": "Titan has a thick atmosphere; most moons do not."}, {"title": "Activity", "text": "Some moons are active with volcanoes or geysers."}, {"title": "Planet Partners", "text": "Moons help shape a planet’s tides and rings."}], "id-quiz": [{"title": "Core Idea", "text": "Use real moon facts."}, {"title": "Key Detail", "text": "Think about orbits, tides, and icy moons."}, {"title": "Quick Clue", "text": "Moons reflect sunlight."}, {"title": "Remember", "text": "Some moons may have hidden oceans."}, {"title": "Extra", "text": "Be precise and use a real example."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'four', q2: ["planets", "group"], q3: 'order', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'natural', q2: ["orbit", "icy"], q3: 'moon', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -24,7 +24,7 @@
 		<div class="title">
 			<p class="tag">Moon Worlds</p>
 			<h1>Satellites</h1>
-			<p class="subtitle">Natural satellites around planets.</p>
+			<p class="subtitle">Natural moons that orbit planets and shape their worlds.</p>
 		</div>
 		<nav class="jump">
 					<button
@@ -89,54 +89,54 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Satellites are natural moons that orbit planets.</p>
+			<p>They shine by reflecting sunlight, not making their own.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-members'} id="id-members">
 			<h2>Members</h2>
-			<p>Group members.</p>
-			<p>Order and key traits.</p>
+			<p>Earth’s Moon, Mars’s Phobos and Deimos, and Jupiter’s big four.</p>
+			<p>Saturn’s Titan and Enceladus are famous icy moons.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-features'} id="id-features">
 			<h2>Features</h2>
-			<p>Shared features.</p>
-			<p>Rings, storms, and size.</p>
+			<p>Many moons are tidally locked and covered in craters.</p>
+			<p>Some are active with volcanoes or icy geysers.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-distance'} id="id-distance">
 			<h2>Distance</h2>
-			<p>Distance from the Sun.</p>
-			<p>Longer years and colder temps.</p>
+			<p>Closer moons orbit faster and feel stronger tidal forces.</p>
+			<p>Some small moons help keep ring edges in place.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-compare'} id="id-compare">
 			<h2>Compare</h2>
-			<p>Compare size and atmosphere.</p>
-			<p>What makes each unique.</p>
+			<p>Moons range from tiny rocks to Ganymede, bigger than Mercury.</p>
+			<p>Titan has a thick atmosphere, while most moons have none.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. There are ______ worlds in this group.</p>
+					<p>1. These are ______ satellites.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="planets" bind:group={quizAnswers.q2} /> They are planets</label>
-					<label><input type="checkbox" value="group" bind:group={quizAnswers.q2} /> They share traits</label>
-					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> They all have rings</label>
+					<p>2. Multi-select: Which statements fit moons?</p>
+					<label><input type="checkbox" value="orbit" bind:group={quizAnswers.q2} /> They orbit planets</label>
+					<label><input type="checkbox" value="icy" bind:group={quizAnswers.q2} /> Some are icy</label>
+					<label><input type="checkbox" value="light" bind:group={quizAnswers.q2} /> They make their own light</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name one member.</p>
+					<p>3. Short answer: Name one moon in our solar system.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
 					<p>4. Which statement is most accurate?</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> They are all the same</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> They share key features</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> They are all comets</label>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> They are stars</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> They are smaller than their planets</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> They are planets with rings</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: This group orbits the Sun.</p>
+					<p>5. True or False: Some moons may have hidden oceans.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>

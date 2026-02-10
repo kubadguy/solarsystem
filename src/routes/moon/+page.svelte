@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-surface", "id-phases", "id-effects", "id-missions", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Earths only natural satellite."}, {"title": "Remember", "text": "Causes ocean tides."}, {"title": "Extra", "text": "Remember this point."}], "id-surface": [{"title": "Core Idea", "text": "What the surface looks like."}, {"title": "Key Detail", "text": "Craters, plains, mountains, and marks."}, {"title": "Quick Clue", "text": "Earths only natural satellite."}, {"title": "Remember", "text": "Causes ocean tides."}, {"title": "Extra", "text": "Remember this point."}], "id-phases": [{"title": "Core Idea", "text": "Light and shadow create phases."}, {"title": "Key Detail", "text": "Phases repeat in a regular cycle."}, {"title": "Quick Clue", "text": "Earths only natural satellite."}, {"title": "Remember", "text": "Causes ocean tides."}, {"title": "Extra", "text": "Remember this point."}], "id-effects": [{"title": "Core Idea", "text": "Effects on tides and stability."}, {"title": "Key Detail", "text": "How the moon shapes Earth."}, {"title": "Quick Clue", "text": "Earths only natural satellite."}, {"title": "Remember", "text": "Causes ocean tides."}, {"title": "Extra", "text": "Remember this point."}], "id-missions": [{"title": "Core Idea", "text": "Spacecraft discoveries."}, {"title": "Key Detail", "text": "What missions revealed about this world."}, {"title": "Quick Clue", "text": "Earths only natural satellite."}, {"title": "Remember", "text": "Causes ocean tides."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Earths only natural satellite."}, {"title": "Remember", "text": "Causes ocean tides."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Natural Satellite", "text": "The Moon is Earths only natural satellite."}, {"title": "Close Neighbor", "text": "It is the closest large object to Earth."}, {"title": "No Air", "text": "It has almost no atmosphere."}, {"title": "Craters", "text": "Impacts made many craters."}, {"title": "Tides", "text": "Its gravity causes ocean tides."}], "id-surface": [{"title": "Maria", "text": "Dark plains are called maria."}, {"title": "Highlands", "text": "Bright highlands are older regions."}, {"title": "Dusty Soil", "text": "Fine dust covers the surface."}, {"title": "Mountains", "text": "There are mountains and valleys."}, {"title": "Extreme Temps", "text": "Temperatures swing from hot to cold."}], "id-phases": [{"title": "Phases", "text": "New, quarter, and full phases repeat."}, {"title": "29 Days", "text": "One cycle takes about 29 days."}, {"title": "Sunlight", "text": "Phases are just sunlight angles."}, {"title": "Same Face", "text": "We mostly see the same side."}, {"title": "Eclipses", "text": "The Moon can block the Sun."}], "id-effects": [{"title": "Tides", "text": "Moon gravity lifts ocean tides."}, {"title": "Stability", "text": "It helps steady Earths tilt."}, {"title": "Night Light", "text": "It lights up the night sky."}, {"title": "Calendar", "text": "Months were based on Moon cycles."}, {"title": "Culture", "text": "It appears in stories and art."}], "id-missions": [{"title": "Apollo", "text": "Humans walked on the Moon."}, {"title": "Robots", "text": "Many probes and landers visited."}, {"title": "Samples", "text": "Moon rocks were brought to Earth."}, {"title": "Mapping", "text": "We have detailed maps."}, {"title": "Future", "text": "New missions are planned."}], "id-quiz": [{"title": "Quick Recall", "text": "Use the facts from each section."}, {"title": "Be Precise", "text": "Short answers should be clear."}, {"title": "Think First", "text": "Try to answer before guessing."}, {"title": "Challenge", "text": "Some answers need details."}, {"title": "You Got This", "text": "Check your score at the end."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'moon', q2: ["craters", "tides"], q3: 'phases', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'satellite', q2: ["tides", "craters"], q3: 'full', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,54 +89,54 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>The Moon is Earth’s only natural satellite.</p>
+			<p>It has no real atmosphere and is covered in craters.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-surface'} id="id-surface">
 			<h2>Surface</h2>
-			<p>What the surface looks like.</p>
-			<p>Craters, plains, mountains, and marks.</p>
+			<p>Dark maria and bright highlands cover the surface.</p>
+			<p>Dusty soil, mountains, and craters are common.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-phases'} id="id-phases">
 			<h2>Phases</h2>
-			<p>Light and shadow create phases.</p>
-			<p>Phases repeat in a regular cycle.</p>
+			<p>Phases happen as sunlight hits different angles.</p>
+			<p>The full cycle repeats about every 29 days.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-effects'} id="id-effects">
 			<h2>Effects</h2>
-			<p>Effects on tides and stability.</p>
-			<p>How the moon shapes Earth.</p>
+			<p>The Moon’s gravity causes ocean tides.</p>
+			<p>It helps steady Earth’s tilt and seasons.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-missions'} id="id-missions">
 			<h2>Missions</h2>
-			<p>Spacecraft discoveries.</p>
-			<p>What missions revealed about this world.</p>
+			<p>Apollo missions landed humans on the Moon.</p>
+			<p>Robotic missions mapped and studied its surface.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. This object is a ______.</p>
+					<p>1. The Moon is Earths natural ______.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="craters" bind:group={quizAnswers.q2} /> Has craters</label>
-					<label><input type="checkbox" value="tides" bind:group={quizAnswers.q2} /> Affects tides</label>
-					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
+					<p>2. Multi-select: Which two are true?</p>
+					<label><input type="checkbox" value="tides" bind:group={quizAnswers.q2} /> It causes tides</label>
+					<label><input type="checkbox" value="craters" bind:group={quizAnswers.q2} /> It has craters</label>
+					<label><input type="checkbox" value="thick air" bind:group={quizAnswers.q2} /> It has thick air</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name one Moon phase.</p>
+					<p>3. Short answer: Name one Moon phase (new, half, or full).</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
 					<p>4. Which statement is most accurate?</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has thick air</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It has almost no air</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a planet</label>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has oceans</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It has almost no atmosphere</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a gas giant</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: We see the same side most of the time.</p>
+					<p>5. True or False: We see mostly the same side of the Moon.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>

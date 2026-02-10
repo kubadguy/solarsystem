@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-structure", "id-orbits", "id-types", "id-famous", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Icy bodies that grow tails near the Sun."}, {"title": "Remember", "text": "Halley returns every 76 years."}, {"title": "Extra", "text": "Remember this point."}], "id-structure": [{"title": "Core Idea", "text": "Core, coma, and jets."}, {"title": "Key Detail", "text": "Comet parts and their jobs."}, {"title": "Quick Clue", "text": "Icy bodies that grow tails near the Sun."}, {"title": "Remember", "text": "Halley returns every 76 years."}, {"title": "Extra", "text": "Remember this point."}], "id-orbits": [{"title": "Core Idea", "text": "Short and long orbits."}, {"title": "Key Detail", "text": "Some return, some do not."}, {"title": "Quick Clue", "text": "Icy bodies that grow tails near the Sun."}, {"title": "Remember", "text": "Halley returns every 76 years."}, {"title": "Extra", "text": "Remember this point."}], "id-types": [{"title": "Core Idea", "text": "Types by material."}, {"title": "Key Detail", "text": "Color and brightness clues."}, {"title": "Quick Clue", "text": "Icy bodies that grow tails near the Sun."}, {"title": "Remember", "text": "Halley returns every 76 years."}, {"title": "Extra", "text": "Remember this point."}], "id-famous": [{"title": "Core Idea", "text": "Famous examples."}, {"title": "Key Detail", "text": "Events and missions."}, {"title": "Quick Clue", "text": "Icy bodies that grow tails near the Sun."}, {"title": "Remember", "text": "Halley returns every 76 years."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Icy bodies that grow tails near the Sun."}, {"title": "Remember", "text": "Halley returns every 76 years."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "Comets are icy leftovers from the solar system’s birth."}, {"title": "Tail Maker", "text": "Near the Sun, ice turns to gas and makes a glowing tail."}, {"title": "Small Nucleus", "text": "The solid core is usually only a few kilometers wide."}, {"title": "Dust and Gas", "text": "Comets are made of ice, dust, and rocky bits."}, {"title": "Travelers", "text": "They visit the inner solar system and then swing back out."}], "id-structure": [{"title": "Nucleus", "text": "The solid core is a dirty snowball of ice and dust."}, {"title": "Coma", "text": "A fuzzy cloud of gas and dust surrounds the nucleus."}, {"title": "Two Tails", "text": "Comets can have a dust tail and an ion (gas) tail."}, {"title": "Tail Direction", "text": "Tails point away from the Sun because of solar wind."}, {"title": "Jets", "text": "Warm spots blast out jets that spin the comet."}], "id-orbits": [{"title": "Short Period", "text": "Short-period comets return in under 200 years."}, {"title": "Kuiper Belt", "text": "Many short-period comets come from the Kuiper Belt."}, {"title": "Long Period", "text": "Long-period comets can take thousands of years."}, {"title": "Oort Cloud", "text": "The Oort Cloud is a distant source for long-period comets."}, {"title": "Changing Paths", "text": "Planet gravity can bend and reshape their orbits."}], "id-types": [{"title": "Dusty Comets", "text": "Some comets have brighter dust tails."}, {"title": "Gas-Rich", "text": "Others show strong blue ion tails from gas."}, {"title": "Active or Quiet", "text": "Activity depends on how much ice is left."}, {"title": "Fresh vs Old", "text": "New comets are brighter; old ones can fade."}, {"title": "Breakups", "text": "Some comets split or break apart near the Sun."}], "id-famous": [{"title": "Halley", "text": "Halley’s Comet returns about every 76 years."}, {"title": "Hale-Bopp", "text": "Hale-Bopp was bright and visible for months in 1997."}, {"title": "Shoemaker-Levy 9", "text": "It broke apart and hit Jupiter in 1994."}, {"title": "Space Missions", "text": "Missions like Rosetta studied comets up close."}, {"title": "Skywatch", "text": "Comets can appear suddenly, then fade again."}], "id-quiz": [{"title": "Core Idea", "text": "Use real comet facts."}, {"title": "Key Detail", "text": "Think about tails, ice, and orbits."}, {"title": "Quick Clue", "text": "Tails point away from the Sun."}, {"title": "Remember", "text": "Halley is the famous periodic comet."}, {"title": "Extra", "text": "Precise words earn the point."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'ice', q2: ["tails", "dust"], q3: 'orbit', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'ice', q2: ["tails", "dust"], q3: 'halley', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,28 +89,28 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Comets are small icy bodies that formed early in the solar system.</p>
+			<p>They grow glowing tails when sunlight warms their ice.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-structure'} id="id-structure">
 			<h2>Structure</h2>
-			<p>Core, coma, and jets.</p>
-			<p>Comet parts and their jobs.</p>
+			<p>The nucleus is the solid core; the coma is a gas cloud.</p>
+			<p>Dust and ion tails stream away from the Sun.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbits'} id="id-orbits">
 			<h2>Orbits</h2>
-			<p>Short and long orbits.</p>
-			<p>Some return, some do not.</p>
+			<p>Short-period comets return in under 200 years.</p>
+			<p>Long-period comets come from the distant Oort Cloud.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-types'} id="id-types">
 			<h2>Types</h2>
-			<p>Types by material.</p>
-			<p>Color and brightness clues.</p>
+			<p>Some comets are dust-rich, others are gas-rich.</p>
+			<p>Activity depends on how much ice remains.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-famous'} id="id-famous">
 			<h2>Famous</h2>
-			<p>Famous examples.</p>
-			<p>Events and missions.</p>
+			<p>Halley’s Comet returns about every 76 years.</p>
+			<p>Hale-Bopp and Shoemaker-Levy 9 are famous examples.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
@@ -120,13 +120,13 @@
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
+					<p>2. Multi-select: Which traits belong to comets?</p>
 					<label><input type="checkbox" value="tails" bind:group={quizAnswers.q2} /> Can form tails</label>
 					<label><input type="checkbox" value="dust" bind:group={quizAnswers.q2} /> Made of dust</label>
 					<label><input type="checkbox" value="giant" bind:group={quizAnswers.q2} /> They are planets</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name a famous example.</p>
+					<p>3. Short answer: Name a famous comet.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">

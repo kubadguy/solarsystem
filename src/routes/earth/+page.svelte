@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-surface", "id-atmosphere", "id-orbit", "id-missions", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Our living planet with oceans and air."}, {"title": "Remember", "text": "Only known world with life."}, {"title": "Extra", "text": "Remember this point."}], "id-surface": [{"title": "Core Idea", "text": "What the surface looks like."}, {"title": "Key Detail", "text": "Craters, plains, mountains, and marks."}, {"title": "Quick Clue", "text": "Our living planet with oceans and air."}, {"title": "Remember", "text": "Only known world with life."}, {"title": "Extra", "text": "Remember this point."}], "id-atmosphere": [{"title": "Core Idea", "text": "Air, clouds, and pressure."}, {"title": "Key Detail", "text": "How the atmosphere changes heat and weather."}, {"title": "Quick Clue", "text": "Our living planet with oceans and air."}, {"title": "Remember", "text": "Only known world with life."}, {"title": "Extra", "text": "Remember this point."}], "id-orbit": [{"title": "Core Idea", "text": "How it travels around the Sun."}, {"title": "Key Detail", "text": "Year length and distance details."}, {"title": "Quick Clue", "text": "Our living planet with oceans and air."}, {"title": "Remember", "text": "Only known world with life."}, {"title": "Extra", "text": "Remember this point."}], "id-missions": [{"title": "Core Idea", "text": "Spacecraft discoveries."}, {"title": "Key Detail", "text": "What missions revealed about this world."}, {"title": "Quick Clue", "text": "Our living planet with oceans and air."}, {"title": "Remember", "text": "Only known world with life."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Our living planet with oceans and air."}, {"title": "Remember", "text": "Only known world with life."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Third Planet", "text": "Earth is the third planet from the Sun."}, {"title": "Liquid Water", "text": "It has oceans of liquid water."}, {"title": "Living World", "text": "Earth is the only known planet with life."}, {"title": "Rocky Surface", "text": "Earth has solid land and oceans."}, {"title": "One Moon", "text": "Earth has one large moon."}], "id-surface": [{"title": "Continents", "text": "Land is split into continents and islands."}, {"title": "Oceans", "text": "Oceans cover most of the surface."}, {"title": "Mountains", "text": "Mountains and valleys shape the land."}, {"title": "Rivers", "text": "Rivers carry water across land."}, {"title": "Ice Caps", "text": "Polar ice stores fresh water."}], "id-atmosphere": [{"title": "Breathable Air", "text": "Air contains oxygen for life."}, {"title": "Weather", "text": "Clouds, wind, and rain make weather."}, {"title": "Protection", "text": "The atmosphere burns up small meteors."}, {"title": "Ozone", "text": "Ozone blocks harmful sunlight."}, {"title": "Pressure", "text": "Air pressure allows liquid water."}], "id-orbit": [{"title": "One Year", "text": "Earth orbits the Sun in about 365 days."}, {"title": "Tilt", "text": "Its tilt causes seasons."}, {"title": "Rotation", "text": "Earth spins once every 24 hours."}, {"title": "Distance", "text": "It is about 150 million km from the Sun."}, {"title": "Stable Orbit", "text": "The orbit is nearly circular."}], "id-missions": [{"title": "Satellites", "text": "Satellites monitor weather and climate."}, {"title": "Space Stations", "text": "Humans live and work in orbit."}, {"title": "Earth Imaging", "text": "Spacecraft map oceans and land."}, {"title": "Navigation", "text": "GPS uses satellites to guide travel."}, {"title": "Science", "text": "Missions study Earth’s changing systems."}], "id-quiz": [{"title": "Quick Recall", "text": "Use the facts from each section."}, {"title": "Be Precise", "text": "Short answers should be clear."}, {"title": "Think First", "text": "Try to answer before guessing."}, {"title": "Challenge", "text": "Some answers need details."}, {"title": "You Got This", "text": "Check your score at the end."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'rocky', q2: ["close", "solid"], q3: 'craters', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'third', q2: ["water", "life"], q3: 'moon', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,54 +89,54 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Earth is the third planet from the Sun and our home.</p>
+			<p>It has liquid water and supports life.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-surface'} id="id-surface">
 			<h2>Surface</h2>
-			<p>What the surface looks like.</p>
-			<p>Craters, plains, mountains, and marks.</p>
+			<p>Oceans cover most of Earth, with continents of land.</p>
+			<p>Mountains, rivers, deserts, and ice shape the surface.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-atmosphere'} id="id-atmosphere">
 			<h2>Atmosphere</h2>
-			<p>Air, clouds, and pressure.</p>
-			<p>How the atmosphere changes heat and weather.</p>
+			<p>Earth’s atmosphere contains oxygen and protects life.</p>
+			<p>It creates weather and blocks harmful radiation.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbit'} id="id-orbit">
 			<h2>Orbit</h2>
-			<p>How it travels around the Sun.</p>
-			<p>Year length and distance details.</p>
+			<p>Earth orbits the Sun in about 365 days.</p>
+			<p>Its tilt causes the seasons we experience.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-missions'} id="id-missions">
 			<h2>Missions</h2>
-			<p>Spacecraft discoveries.</p>
-			<p>What missions revealed about this world.</p>
+			<p>Satellites watch Earth’s weather, oceans, and land.</p>
+			<p>Space missions help us understand climate and change.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. This world is a ______ planet.</p>
+					<p>1. Earth is the ______ planet from the Sun.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="close" bind:group={quizAnswers.q2} /> Close to the Sun</label>
-					<label><input type="checkbox" value="solid" bind:group={quizAnswers.q2} /> Solid surface</label>
-					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
+					<p>2. Multi-select: Which two are special about Earth?</p>
+					<label><input type="checkbox" value="water" bind:group={quizAnswers.q2} /> Liquid water</label>
+					<label><input type="checkbox" value="life" bind:group={quizAnswers.q2} /> Life</label>
+					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Rings</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name one surface feature.</p>
+					<p>3. Short answer: Earth has one large ______.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
 					<p>4. Which statement is most accurate?</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has no surface</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It has a solid surface</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a star</label>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> Earth has no atmosphere</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> Earth has a breathable atmosphere</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> Earth is a gas giant</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: It orbits the Sun.</p>
+					<p>5. True or False: Ocean currents help move heat around Earth.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>

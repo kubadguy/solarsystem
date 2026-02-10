@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-surface", "id-atmosphere", "id-orbit", "id-missions", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Hot, cloudy world with thick air."}, {"title": "Remember", "text": "Hottest planet."}, {"title": "Extra", "text": "Remember this point."}], "id-surface": [{"title": "Core Idea", "text": "What the surface looks like."}, {"title": "Key Detail", "text": "Craters, plains, mountains, and marks."}, {"title": "Quick Clue", "text": "Hot, cloudy world with thick air."}, {"title": "Remember", "text": "Hottest planet."}, {"title": "Extra", "text": "Remember this point."}], "id-atmosphere": [{"title": "Core Idea", "text": "Air, clouds, and pressure."}, {"title": "Key Detail", "text": "How the atmosphere changes heat and weather."}, {"title": "Quick Clue", "text": "Hot, cloudy world with thick air."}, {"title": "Remember", "text": "Hottest planet."}, {"title": "Extra", "text": "Remember this point."}], "id-orbit": [{"title": "Core Idea", "text": "How it travels around the Sun."}, {"title": "Key Detail", "text": "Year length and distance details."}, {"title": "Quick Clue", "text": "Hot, cloudy world with thick air."}, {"title": "Remember", "text": "Hottest planet."}, {"title": "Extra", "text": "Remember this point."}], "id-missions": [{"title": "Core Idea", "text": "Spacecraft discoveries."}, {"title": "Key Detail", "text": "What missions revealed about this world."}, {"title": "Quick Clue", "text": "Hot, cloudy world with thick air."}, {"title": "Remember", "text": "Hottest planet."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Hot, cloudy world with thick air."}, {"title": "Remember", "text": "Hottest planet."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Earth Twin", "text": "Venus is similar in size to Earth."}, {"title": "Hottest Planet", "text": "It is the hottest planet in the solar system."}, {"title": "Bright in Sky", "text": "Venus is one of the brightest objects at night."}, {"title": "Rocky World", "text": "It has a solid rocky surface."}, {"title": "No Moons", "text": "Venus has no moons or rings."}], "id-surface": [{"title": "Volcanoes", "text": "The surface has many volcanoes."}, {"title": "Lava Plains", "text": "Large lava plains cover wide areas."}, {"title": "Mountains", "text": "High mountains and ridges rise up."}, {"title": "Craters", "text": "Impact craters dot the surface."}, {"title": "Hidden View", "text": "Thick clouds hide the surface from view."}], "id-atmosphere": [{"title": "Very Thick", "text": "The atmosphere is extremely thick."}, {"title": "Carbon Dioxide", "text": "CO2 makes up most of the air."}, {"title": "Acid Clouds", "text": "Clouds contain sulfuric acid."}, {"title": "High Pressure", "text": "Pressure is much higher than on Earth."}, {"title": "Greenhouse", "text": "Heat is trapped by a strong greenhouse effect."}], "id-orbit": [{"title": "Slow Spin", "text": "Venus rotates very slowly."}, {"title": "Backward Spin", "text": "It spins in the opposite direction of most planets."}, {"title": "Long Day", "text": "A day on Venus is longer than its year."}, {"title": "Near Sun", "text": "It is the second planet from the Sun."}, {"title": "Bright Dawn", "text": "It is often seen as the morning or evening star."}], "id-missions": [{"title": "Venera", "text": "Soviet landers sent surface data."}, {"title": "Magellan", "text": "Mapped the surface with radar."}, {"title": "Akatsuki", "text": "Studies Venus’s atmosphere today."}, {"title": "Radar Maps", "text": "We use radar to see through clouds."}, {"title": "Future", "text": "New missions are planned to return."}], "id-quiz": [{"title": "Quick Recall", "text": "Use the facts from each section."}, {"title": "Be Precise", "text": "Short answers should be clear."}, {"title": "Think First", "text": "Try to answer before guessing."}, {"title": "Challenge", "text": "Some answers need details."}, {"title": "You Got This", "text": "Check your score at the end."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'rocky', q2: ["close", "solid"], q3: 'craters', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'hottest', q2: ["thick air", "acid clouds"], q3: 'magellan', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,54 +89,54 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Venus is Earth’s size twin but far hotter.</p>
+			<p>It shines brightly in our sky and has no moons.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-surface'} id="id-surface">
 			<h2>Surface</h2>
-			<p>What the surface looks like.</p>
-			<p>Craters, plains, mountains, and marks.</p>
+			<p>Volcanoes and lava plains cover much of the surface.</p>
+			<p>Radar images reveal mountains and impact craters.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-atmosphere'} id="id-atmosphere">
 			<h2>Atmosphere</h2>
-			<p>Air, clouds, and pressure.</p>
-			<p>How the atmosphere changes heat and weather.</p>
+			<p>Venus has a thick CO2 atmosphere with acid clouds.</p>
+			<p>The greenhouse effect traps heat and makes it scorching.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbit'} id="id-orbit">
 			<h2>Orbit</h2>
-			<p>How it travels around the Sun.</p>
-			<p>Year length and distance details.</p>
+			<p>Venus is the second planet from the Sun.</p>
+			<p>It spins very slowly and in the opposite direction.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-missions'} id="id-missions">
 			<h2>Missions</h2>
-			<p>Spacecraft discoveries.</p>
-			<p>What missions revealed about this world.</p>
+			<p>Magellan mapped the surface using radar.</p>
+			<p>Venera landers sent data from the surface.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. This world is a ______ planet.</p>
+					<p>1. Venus is the ______ planet.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="close" bind:group={quizAnswers.q2} /> Close to the Sun</label>
-					<label><input type="checkbox" value="solid" bind:group={quizAnswers.q2} /> Solid surface</label>
-					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
+					<p>2. Multi-select: Which two describe Venus?</p>
+					<label><input type="checkbox" value="thick air" bind:group={quizAnswers.q2} /> Thick atmosphere</label>
+					<label><input type="checkbox" value="acid clouds" bind:group={quizAnswers.q2} /> Acid clouds</label>
+					<label><input type="checkbox" value="many moons" bind:group={quizAnswers.q2} /> Many moons</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name one surface feature.</p>
+					<p>3. Short answer: Name one Venus mission.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
 					<p>4. Which statement is most accurate?</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has no surface</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It has a solid surface</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a star</label>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> Venus is a gas giant</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> Venus has a rocky surface</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> Venus has rings</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: It orbits the Sun.</p>
+					<p>5. True or False: Venus is similar in size to Earth.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>

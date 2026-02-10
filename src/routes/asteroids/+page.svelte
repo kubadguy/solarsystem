@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-structure", "id-orbits", "id-types", "id-famous", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Small rocky bodies orbiting the Sun."}, {"title": "Remember", "text": "Many live in the asteroid belt."}, {"title": "Extra", "text": "Remember this point."}], "id-structure": [{"title": "Core Idea", "text": "Core, coma, and jets."}, {"title": "Key Detail", "text": "Comet parts and their jobs."}, {"title": "Quick Clue", "text": "Small rocky bodies orbiting the Sun."}, {"title": "Remember", "text": "Many live in the asteroid belt."}, {"title": "Extra", "text": "Remember this point."}], "id-orbits": [{"title": "Core Idea", "text": "Short and long orbits."}, {"title": "Key Detail", "text": "Some return, some do not."}, {"title": "Quick Clue", "text": "Small rocky bodies orbiting the Sun."}, {"title": "Remember", "text": "Many live in the asteroid belt."}, {"title": "Extra", "text": "Remember this point."}], "id-types": [{"title": "Core Idea", "text": "Types by material."}, {"title": "Key Detail", "text": "Color and brightness clues."}, {"title": "Quick Clue", "text": "Small rocky bodies orbiting the Sun."}, {"title": "Remember", "text": "Many live in the asteroid belt."}, {"title": "Extra", "text": "Remember this point."}], "id-famous": [{"title": "Core Idea", "text": "Famous examples."}, {"title": "Key Detail", "text": "Events and missions."}, {"title": "Quick Clue", "text": "Small rocky bodies orbiting the Sun."}, {"title": "Remember", "text": "Many live in the asteroid belt."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Small rocky bodies orbiting the Sun."}, {"title": "Remember", "text": "Many live in the asteroid belt."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Small Bodies", "text": "Asteroids are small rocky objects."}, {"title": "Many", "text": "Millions orbit the Sun."}, {"title": "Main Belt", "text": "Most live between Mars and Jupiter."}, {"title": "Near Earth", "text": "Some pass near Earth."}, {"title": "Leftovers", "text": "They are leftover building blocks."}], "id-structure": [{"title": "Rocky", "text": "Most are made of rock and metal."}, {"title": "Rubble Piles", "text": "Some are piles of loose rocks."}, {"title": "Odd Shapes", "text": "Many are lumpy, not round."}, {"title": "Craters", "text": "Impacts leave craters and scars."}, {"title": "Spinning", "text": "They rotate at different speeds."}], "id-orbits": [{"title": "Elliptical", "text": "Orbits are often oval."}, {"title": "Families", "text": "Groups share similar orbits."}, {"title": "Resonance", "text": "Jupiter creates gaps in the belt."}, {"title": "Crossers", "text": "Some cross Earths orbit."}, {"title": "Long Paths", "text": "Farther ones move more slowly."}], "id-types": [{"title": "C Type", "text": "Carbon-rich and dark."}, {"title": "S Type", "text": "Stony and brighter."}, {"title": "M Type", "text": "Metal-rich."}, {"title": "Colors", "text": "Color hints at material."}, {"title": "Meteorites", "text": "Some pieces land on Earth."}], "id-famous": [{"title": "Vesta", "text": "A large asteroid visited by Dawn."}, {"title": "Ceres", "text": "The largest object in the belt."}, {"title": "Bennu", "text": "Sampled by OSIRIS-REx."}, {"title": "Ryugu", "text": "Sampled by Hayabusa2."}, {"title": "Chelyabinsk", "text": "A small impact event in 2013."}], "id-quiz": [{"title": "Quick Recall", "text": "Use the facts from each section."}, {"title": "Be Precise", "text": "Short answers should be clear."}, {"title": "Think First", "text": "Try to answer before guessing."}, {"title": "Challenge", "text": "Some answers need details."}, {"title": "You Got This", "text": "Check your score at the end."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'ice', q2: ["tails", "dust"], q3: 'orbit', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'rocky', q2: ["belt", "near"], q3: 'ceres', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,54 +89,54 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Asteroids are small rocky bodies that orbit the Sun.</p>
+			<p>Most are in the asteroid belt, but some pass near Earth.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-structure'} id="id-structure">
 			<h2>Structure</h2>
-			<p>Core, coma, and jets.</p>
-			<p>Comet parts and their jobs.</p>
+			<p>Asteroids are rocky or metallic and often irregular.</p>
+			<p>Some are rubble piles held together by gravity.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbits'} id="id-orbits">
 			<h2>Orbits</h2>
-			<p>Short and long orbits.</p>
-			<p>Some return, some do not.</p>
+			<p>Asteroids orbit the Sun in oval paths.</p>
+			<p>Some cross Earths orbit and are tracked closely.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-types'} id="id-types">
 			<h2>Types</h2>
-			<p>Types by material.</p>
-			<p>Color and brightness clues.</p>
+			<p>C-type, S-type, and M-type show different materials.</p>
+			<p>Color and brightness give clues about composition.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-famous'} id="id-famous">
 			<h2>Famous</h2>
-			<p>Famous examples.</p>
-			<p>Events and missions.</p>
+			<p>Vesta and Ceres are large belt objects.</p>
+			<p>Bennu and Ryugu were visited and sampled by missions.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. These objects are mostly ______.</p>
+					<p>1. Asteroids are mostly ______ bodies.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="tails" bind:group={quizAnswers.q2} /> Can form tails</label>
-					<label><input type="checkbox" value="dust" bind:group={quizAnswers.q2} /> Made of dust</label>
-					<label><input type="checkbox" value="giant" bind:group={quizAnswers.q2} /> They are planets</label>
+					<p>2. Multi-select: Which two are true?</p>
+					<label><input type="checkbox" value="belt" bind:group={quizAnswers.q2} /> Many are in a belt</label>
+					<label><input type="checkbox" value="near" bind:group={quizAnswers.q2} /> Some pass near Earth</label>
+					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> They have rings</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name a famous example.</p>
+					<p>3. Short answer: Name the largest object in the asteroid belt.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
 					<p>4. Which statement is most accurate?</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> They are made of gas only</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> They are made of ice and dust</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> They are stars</label>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> All asteroids are round</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> Many are irregular shapes</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> They are gas giants</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: Some come from the Kuiper Belt.</p>
+					<p>5. True or False: Some meteorites are asteroid pieces.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>

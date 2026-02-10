@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-surface", "id-atmosphere", "id-orbit", "id-missions", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Dusty world with volcanoes and canyons."}, {"title": "Remember", "text": "Two moons: Phobos and Deimos."}, {"title": "Extra", "text": "Remember this point."}], "id-surface": [{"title": "Core Idea", "text": "What the surface looks like."}, {"title": "Key Detail", "text": "Craters, plains, mountains, and marks."}, {"title": "Quick Clue", "text": "Dusty world with volcanoes and canyons."}, {"title": "Remember", "text": "Two moons: Phobos and Deimos."}, {"title": "Extra", "text": "Remember this point."}], "id-atmosphere": [{"title": "Core Idea", "text": "Air, clouds, and pressure."}, {"title": "Key Detail", "text": "How the atmosphere changes heat and weather."}, {"title": "Quick Clue", "text": "Dusty world with volcanoes and canyons."}, {"title": "Remember", "text": "Two moons: Phobos and Deimos."}, {"title": "Extra", "text": "Remember this point."}], "id-orbit": [{"title": "Core Idea", "text": "How it travels around the Sun."}, {"title": "Key Detail", "text": "Year length and distance details."}, {"title": "Quick Clue", "text": "Dusty world with volcanoes and canyons."}, {"title": "Remember", "text": "Two moons: Phobos and Deimos."}, {"title": "Extra", "text": "Remember this point."}], "id-missions": [{"title": "Core Idea", "text": "Spacecraft discoveries."}, {"title": "Key Detail", "text": "What missions revealed about this world."}, {"title": "Quick Clue", "text": "Dusty world with volcanoes and canyons."}, {"title": "Remember", "text": "Two moons: Phobos and Deimos."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Dusty world with volcanoes and canyons."}, {"title": "Remember", "text": "Two moons: Phobos and Deimos."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Red Planet", "text": "Mars looks red because of iron dust."}, {"title": "Rocky World", "text": "It has a solid, rocky surface."}, {"title": "Two Moons", "text": "Phobos and Deimos orbit Mars."}, {"title": "Colder", "text": "Mars is much colder than Earth."}, {"title": "Thin Air", "text": "Its atmosphere is very thin."}], "id-surface": [{"title": "Olympus Mons", "text": "Home to the largest volcano in the solar system."}, {"title": "Valles Marineris", "text": "A canyon system longer than any on Earth."}, {"title": "Dust Storms", "text": "Storms can cover the planet."}, {"title": "Craters", "text": "Many impact craters remain."}, {"title": "Ice Caps", "text": "Polar ice caps grow and shrink by season."}], "id-atmosphere": [{"title": "Mostly CO2", "text": "Carbon dioxide makes up most of the air."}, {"title": "Thin Pressure", "text": "Pressure is far lower than Earth."}, {"title": "Cold Winds", "text": "Winds move dust across the surface."}, {"title": "Dusty Sky", "text": "The sky can look pink or tan."}, {"title": "Weak Protection", "text": "Little air means little protection from radiation."}], "id-orbit": [{"title": "Longer Year", "text": "One Mars year is 687 Earth days."}, {"title": "Seasons", "text": "Tilt causes seasons like Earth."}, {"title": "Distance", "text": "It is the fourth planet from the Sun."}, {"title": "Oval Path", "text": "Its orbit is more oval than Earths."}, {"title": "Day Length", "text": "A Mars day is about 24.6 hours."}], "id-missions": [{"title": "Rovers", "text": "Rovers like Curiosity explore the surface."}, {"title": "Perseverance", "text": "Searching for signs of ancient life."}, {"title": "Ingenuity", "text": "A small helicopter flew on Mars."}, {"title": "Orbiters", "text": "Satellites map and study the planet."}, {"title": "Samples", "text": "Future missions aim to return samples."}], "id-quiz": [{"title": "Quick Recall", "text": "Use the facts from each section."}, {"title": "Be Precise", "text": "Short answers should be clear."}, {"title": "Think First", "text": "Try to answer before guessing."}, {"title": "Challenge", "text": "Some answers need details."}, {"title": "You Got This", "text": "Check your score at the end."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'rocky', q2: ["close", "solid"], q3: 'craters', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'red', q2: ["two moons", "thin air"], q3: 'olympus', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -89,54 +89,54 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Mars is the red, rocky planet just beyond Earth.</p>
+			<p>It is colder, with a very thin atmosphere.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-surface'} id="id-surface">
 			<h2>Surface</h2>
-			<p>What the surface looks like.</p>
-			<p>Craters, plains, mountains, and marks.</p>
+			<p>Huge volcanoes and canyons shape the surface.</p>
+			<p>Dust storms and craters are common features.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-atmosphere'} id="id-atmosphere">
 			<h2>Atmosphere</h2>
-			<p>Air, clouds, and pressure.</p>
-			<p>How the atmosphere changes heat and weather.</p>
+			<p>Mars has a thin CO2 atmosphere.</p>
+			<p>Low pressure means weak protection and cold temperatures.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-orbit'} id="id-orbit">
 			<h2>Orbit</h2>
-			<p>How it travels around the Sun.</p>
-			<p>Year length and distance details.</p>
+			<p>Mars takes 687 Earth days to orbit the Sun.</p>
+			<p>Its tilt gives it seasons like Earth.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-missions'} id="id-missions">
 			<h2>Missions</h2>
-			<p>Spacecraft discoveries.</p>
-			<p>What missions revealed about this world.</p>
+			<p>Rovers and orbiters study Mars up close.</p>
+			<p>Perseverance is searching for signs of ancient life.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
 			<div class="quiz">
 				<div class="question">
-					<p>1. This world is a ______ planet.</p>
+					<p>1. Mars is known as the ______ planet.</p>
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
-					<label><input type="checkbox" value="close" bind:group={quizAnswers.q2} /> Close to the Sun</label>
-					<label><input type="checkbox" value="solid" bind:group={quizAnswers.q2} /> Solid surface</label>
-					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
+					<p>2. Multi-select: Which two are true about Mars?</p>
+					<label><input type="checkbox" value="two moons" bind:group={quizAnswers.q2} /> It has two moons</label>
+					<label><input type="checkbox" value="thin air" bind:group={quizAnswers.q2} /> It has thin air</label>
+					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> It has rings</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name one surface feature.</p>
+					<p>3. Short answer: Name the giant volcano on Mars.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
 					<p>4. Which statement is most accurate?</p>
-					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> It has no surface</label>
-					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> It has a solid surface</label>
-					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a star</label>
+					<label><input type="radio" name="q4" value="a" bind:group={quizAnswers.q4} /> Mars is a gas giant</label>
+					<label><input type="radio" name="q4" value="b" bind:group={quizAnswers.q4} /> Mars has a thin atmosphere</label>
+					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> Mars has rings</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: It orbits the Sun.</p>
+					<p>5. True or False: Mars shows signs of past water.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>

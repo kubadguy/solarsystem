@@ -1,13 +1,13 @@
 <script>
 	const sections = ["id-overview", "id-atmosphere", "id-storms", "id-moons", "id-rings", "id-quiz"];
-	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "What it is and where it belongs."}, {"title": "Key Detail", "text": "Key identity facts to remember."}, {"title": "Quick Clue", "text": "Gas giant famous for bright rings."}, {"title": "Remember", "text": "Rings of ice and rock."}, {"title": "Extra", "text": "Remember this point."}], "id-atmosphere": [{"title": "Core Idea", "text": "Air, clouds, and pressure."}, {"title": "Key Detail", "text": "How the atmosphere changes heat and weather."}, {"title": "Quick Clue", "text": "Gas giant famous for bright rings."}, {"title": "Remember", "text": "Rings of ice and rock."}, {"title": "Extra", "text": "Remember this point."}], "id-storms": [{"title": "Core Idea", "text": "Big storms and fast winds."}, {"title": "Key Detail", "text": "Weather that can last for years."}, {"title": "Quick Clue", "text": "Gas giant famous for bright rings."}, {"title": "Remember", "text": "Rings of ice and rock."}, {"title": "Extra", "text": "Remember this point."}], "id-moons": [{"title": "Core Idea", "text": "Major moons and their traits."}, {"title": "Key Detail", "text": "Some are icy, some are volcanic."}, {"title": "Quick Clue", "text": "Gas giant famous for bright rings."}, {"title": "Remember", "text": "Rings of ice and rock."}, {"title": "Extra", "text": "Remember this point."}], "id-rings": [{"title": "Core Idea", "text": "Rings are icy and thin."}, {"title": "Key Detail", "text": "Gaps and divisions shape the system."}, {"title": "Quick Clue", "text": "Gas giant famous for bright rings."}, {"title": "Remember", "text": "Rings of ice and rock."}, {"title": "Extra", "text": "Remember this point."}], "id-quiz": [{"title": "Core Idea", "text": "Test yourself with harder questions."}, {"title": "Key Detail", "text": "Try to answer without guessing."}, {"title": "Quick Clue", "text": "Gas giant famous for bright rings."}, {"title": "Remember", "text": "Rings of ice and rock."}, {"title": "Extra", "text": "Remember this point."}]};
+	const factsBySection = {"id-overview": [{"title": "Core Idea", "text": "Saturn is the sixth planet and the second-largest."}, {"title": "Famous Look", "text": "Its bright rings are made of ice and rock."}, {"title": "Lightweight", "text": "Saturn is the least dense planet and could float in water."}, {"title": "Fast Day", "text": "One day is about 10.7 hours long."}, {"title": "Long Year", "text": "It takes about 29.5 Earth years to orbit the Sun."}], "id-atmosphere": [{"title": "Main Gases", "text": "Mostly hydrogen and helium, like Jupiter."}, {"title": "Cloud Layers", "text": "Ammonia clouds sit above deeper hazes."}, {"title": "Wind Belts", "text": "Jet streams wrap around the planet in bands."}, {"title": "Cold World", "text": "Far from the Sun, Saturn is very cold."}, {"title": "Color Clues", "text": "Pale gold colors come from chemistry in the clouds."}], "id-storms": [{"title": "Giant Storms", "text": "Saturn can produce huge storms that circle the planet."}, {"title": "North Hexagon", "text": "A six-sided jet stream spins at the north pole."}, {"title": "Lightning", "text": "Powerful lightning flashes inside storm clouds."}, {"title": "Fast Winds", "text": "Winds can reach over 1,000 km/h."}, {"title": "Seasonal", "text": "Storm activity changes with long seasons."}], "id-moons": [{"title": "Titan", "text": "Titan is larger than Mercury and has a thick atmosphere."}, {"title": "Methane Lakes", "text": "Titan has lakes and rivers of liquid methane."}, {"title": "Enceladus", "text": "Enceladus shoots icy water plumes into space."}, {"title": "Many Moons", "text": "Saturn has dozens of moons in different orbits."}, {"title": "Ring Helpers", "text": "Small moons shape and keep the rings in place."}], "id-rings": [{"title": "Ice and Rock", "text": "The rings are mostly ice with some rocky dust."}, {"title": "Main Rings", "text": "The brightest are the A, B, and C rings."}, {"title": "Cassini Division", "text": "A wide dark gap separates major rings."}, {"title": "Thin But Wide", "text": "The rings are wide but very thin top to bottom."}, {"title": "Always Changing", "text": "Ring particles collide and shift over time."}], "id-quiz": [{"title": "Core Idea", "text": "Use Saturn’s real features, not guesses."}, {"title": "Key Detail", "text": "Remember Titan, Enceladus, and the rings."}, {"title": "Quick Clue", "text": "Think of ice, methane, and long seasons."}, {"title": "Remember", "text": "The north pole has a hexagon."}, {"title": "Extra", "text": "Be precise with names for full points."}]};
 	let activeSection = 'id-overview';
 	let activeFacts = factsBySection[activeSection];
 	let quizAnswers = { q1: '', q2: [], q3: '', q4: '', q5: '' };
 	let score = null;
 	function setSection(id) { activeSection = id; }
 	function submitQuiz() {
-		const answerKey = { q1: 'gas', q2: ["storms", "rings"], q3: 'moons', q4: 'b', q5: 'true' };
+		const answerKey = { q1: 'gas', q2: ["storms", "rings"], q3: 'titan', q4: 'b', q5: 'true' };
 		let tally = 0;
 		if (quizAnswers.q1.trim().toLowerCase().includes(answerKey.q1)) tally += 1;
 		if (quizAnswers.q2.length === answerKey.q2.length && answerKey.q2.every((item) => quizAnswers.q2.includes(item))) tally += 1;
@@ -24,7 +24,7 @@
 		<div class="title">
 			<p class="tag">Ring Master</p>
 			<h1>Saturn</h1>
-			<p class="subtitle">Gas giant famous for bright rings.</p>
+			<p class="subtitle">A pale gas giant with the brightest rings in the solar system.</p>
 		</div>
 		<nav class="jump">
 					<button
@@ -89,28 +89,28 @@
 	<section class="panels">
 		<article class="panel" data-active={activeSection === 'id-overview'} id="id-overview">
 			<h2>Overview</h2>
-			<p>What it is and where it belongs.</p>
-			<p>Key identity facts to remember.</p>
+			<p>Saturn is the sixth planet and the second-largest in the solar system.</p>
+			<p>It spins fast and is so light it could float in water.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-atmosphere'} id="id-atmosphere">
 			<h2>Atmosphere</h2>
-			<p>Air, clouds, and pressure.</p>
-			<p>How the atmosphere changes heat and weather.</p>
+			<p>Hydrogen and helium gases make up most of the atmosphere.</p>
+			<p>Cloud layers and jet streams create banded weather patterns.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-storms'} id="id-storms">
 			<h2>Storms</h2>
-			<p>Big storms and fast winds.</p>
-			<p>Weather that can last for years.</p>
+			<p>Saturn can form giant storms that wrap around the planet.</p>
+			<p>A six-sided jet stream spins at the north pole.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-moons'} id="id-moons">
 			<h2>Moons</h2>
-			<p>Major moons and their traits.</p>
-			<p>Some are icy, some are volcanic.</p>
+			<p>Titan has a thick atmosphere and liquid methane lakes.</p>
+			<p>Enceladus shoots icy water plumes into space.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-rings'} id="id-rings">
 			<h2>Rings</h2>
-			<p>Rings are icy and thin.</p>
-			<p>Gaps and divisions shape the system.</p>
+			<p>The rings are made of ice chunks and dusty rock.</p>
+			<p>The Cassini Division is a dark gap between main rings.</p>
 		</article>
 		<article class="panel" data-active={activeSection === 'id-quiz'} id="id-quiz">
 			<h2>Mini Test</h2>
@@ -120,13 +120,13 @@
 					<input type="text" placeholder="One word" bind:value={quizAnswers.q1} />
 				</div>
 				<div class="question">
-					<p>2. Multi-select:</p>
+					<p>2. Multi-select: Which traits belong to Saturn?</p>
 					<label><input type="checkbox" value="storms" bind:group={quizAnswers.q2} /> Has storms</label>
 					<label><input type="checkbox" value="rings" bind:group={quizAnswers.q2} /> Has rings</label>
 					<label><input type="checkbox" value="rocky" bind:group={quizAnswers.q2} /> Mostly rock</label>
 				</div>
 				<div class="question">
-					<p>3. Short answer: Name a feature of this planet.</p>
+					<p>3. Short answer: Name Saturn’s largest moon.</p>
 					<input type="text" placeholder="Answer" bind:value={quizAnswers.q3} />
 				</div>
 				<div class="question">
@@ -136,7 +136,7 @@
 					<label><input type="radio" name="q4" value="c" bind:group={quizAnswers.q4} /> It is a comet</label>
 				</div>
 				<div class="question">
-					<p>5. True or False: It has many moons.</p>
+					<p>5. True or False: Saturn has many moons.</p>
 					<label><input type="radio" name="q5" value="true" bind:group={quizAnswers.q5} /> True</label>
 					<label><input type="radio" name="q5" value="false" bind:group={quizAnswers.q5} /> False</label>
 				</div>
